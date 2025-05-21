@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POMTO - Trabalho remoto com segurança, saúde e confiança</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --accent-dark: #38b6db;
+            --text-color: #333;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --light-gray: #e9ecef;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.5rem 1rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/hero.jpg') center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 60px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        section {
+            padding: 6rem 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .feature-box {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+            padding: 2.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--primary-color);
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .video-section {
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+        
+        .video-container {
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .video-placeholder {
+            aspect-ratio: 16/9;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #666;
+        }
+        
+        .screenshots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .screenshot-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .screenshot-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .screenshot-placeholder {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .screenshot-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .screenshot-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .testimonials {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .client-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .client-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            background-color: var(--accent-color);
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .client-info h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .client-info p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        .pricing {
+            background-color: var(--light-gray);
+        }
+        
+        .pricing-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .plan {
+            background-color: white;
+            border-radius: 15px;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .plan:hover {
+            transform: translateY(-10px);
+        }
+        
+        .plan-popular {
+            border: 3px solid var(--accent-color);
+            transform: scale(1.03);
+        }
+        
+        .plan-popular:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .plan-popular::before {
+            content: "Popular";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-bottom-left-radius: 15px;
+        }
+        
+        .plan h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+        }
+        
+        .price span {
+            font-size: 1rem;
+            font-weight: normal;
+            color: #666;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin: 2.5rem 0;
+        }
+        
+        .plan-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .plan .btn {
+            width: 80%;
+        }
+        
+        .cta {
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('assets/cta.jpg') center/cover;
+            color: white;
+            padding: 8rem 2rem;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 5rem 2rem 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: left;
+        }
+        
+        .footer-column h3 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .plan-popular {
+                transform: scale(1);
+            }
+            
+            .plan-popular:hover {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo-container">
+                <img src="assets/pomto_icon.png" class="logo-image" alt="Logotipo do POMTO">
+                <span class="logo-text">POMTO</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Funcionalidades</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#screenshots">Screenshots</a></li>
+                <li><a href="#pricing">Planos</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>POMTO - Pombo Remoto</h1>
+            <p>Trabalho remoto com segurança, saúde e confiança. Uma solução inovadora para trabalhadores remotos e empresas.</p>
+            <a href="#demo" class="btn btn-primary">Ver Demonstração</a>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Funcionalidades Principais</h2>
+                <p>Oferecemos ferramentas inovadoras para melhorar a experiência do trabalho remoto</p>
+            </div>
+            <div class="features">
+                <div class="feature-box">
+                    <div class="feature-icon">📊</div>
+                    <h3>Monitoramento de Tarefas</h3>
+                    <p>Controle de atividades por objetivo, com registros seguros e claros. Sem monitoramento invasivo.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>Configuração de Descanso</h3>
+                    <p>Recomendações para evitar exaustão e manter o bem-estar do profissional com dicas de saúde.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">💪</div>
+                    <h3>Tela de Descanso Motivacional</h3>
+                    <p>Frases de personalidades africanas e internacionais que inspiram e humanizam a jornada de trabalho.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">📝</div>
+                    <h3>Relatórios Detalhados</h3>
+                    <p>Geração de relatórios em CSV/Excel com transparência e dados acessíveis tanto para o trabalhador quanto para a empresa.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🏢</div>
+                    <h3>Gerenciamento Multiempresa</h3>
+                    <p>Possibilidade de adicionar e alternar entre diferentes empresas para profissionais que trabalham em múltiplos projetos.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">📈</div>
+                    <h3>Dashboard Dinâmica</h3>
+                    <p>Informações sobre tarefas, arquivos alterados, remuneração prevista, além de gráficos e indicadores de produtividade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="demo" class="video-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Veja o POMTO em Ação</h2>
+                <p>Assista à nossa demonstração para entender como o POMTO funciona</p>
+            </div>
+            <div class="video-container">
+                <video style="width: 100%; height: 100%;" autoplay muted loop playsinline>
+                    <source src="assets/video_demo.mp4" type="video/mp4">
+                    Seu navegador não suporta o elemento de vídeo.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section id="screenshots">
+        <div class="container">
+            <div class="section-title">
+                <h2>Screenshots</h2>
+                <p>Conheça a interface do POMTO</p>
+            </div>
+            <div class="screenshots">
+                <div class="screenshot-item">
+                    <div class="screenshot-placeholder">
+                        <img src="assets/dashboard.png" alt="Dashboard do POMTO">
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-placeholder">
+                        <img src="assets/gerenciador_de_tarefas.png" alt="Gerenciamento de Tarefas">
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-placeholder">
+                        <img src="assets/detalhes_tarefa.png" alt="Detalhes de Tarefas">
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-placeholder">
+                        <img src="assets/relatorios.png" alt="Relatórios">
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-placeholder">
+                        <img src="assets/tela_descanso.png" alt="Tela de Descanso">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: #f8f9fa;">Sobre o Desenvolvedor</h2>
+                <p style="color:#ddd">Conheça quem está por trás do POMTO</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Minha visão para o POMTO nasceu da necessidade de criar uma solução que respeite a privacidade dos trabalhadores remotos enquanto fornece transparência para as empresas. Acredito que o trabalho remoto deve ser baseado em confiança e resultados, não em vigilância constante."</p>
+                    <div class="client-info">
+                        <div class="client-image">
+                            <img src="assets/ceo.jpg" style="width: 100%;" alt="Fundador">
+                        </div>
+                        <div>
+                            <h4>Eliézer Afonso</h4>
+                            <p>Desenvolvedor Principal & Fundador</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Com mais de 5 anos de experiência em desenvolvimento de software, especializo-me em criar soluções que combinam usabilidade com funcionalidade robusta. O POMTO representa minha paixão por ferramentas que realmente melhoram a vida das pessoas."</p>
+                    <div class="client-info">
+                        <div>
+                            <p>Engenheiro de Software</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Minha formação em Programação, combinada com empatia, me permitiu criar uma ferramenta que não apenas monitora tarefas, mas também promove o bem-estar e a motivação. O POMTO é o resultado dessa visão holística."</p>
+                    <div class="client-info">
+                        <div>
+                            <p>Arquiteto de Soluções & Empreendedor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section id="pricing" class="pricing">
+    <div class="container">
+        <div class="section-title">
+            <h2>Planos e Preços</h2>
+            <p>Use gratuitamente como indivíduo ou contrate um plano empresarial para gerenciar sua equipe</p>
+        </div>
+        <div class="pricing-plans">
+
+            <!-- Plano Gratuito para Usuários -->
+            <div class="plan">
+                <h3>Uso Pessoal</h3>
+                <div class="price">Gratuito</div>
+                <ul class="plan-features">
+                    <li>Controle de tarefas pessoal</li>
+                    <li>Dashboard simplificada</li>
+                    <li>Lembretes de descanso</li>
+                    <li>Participação em múltiplas empresas</li>
+                    <li>Suporte por e-mail</li>
+                </ul>
+                <a href="https://apps.microsoft.com/store/detail/9N852P6N7NKM?cid=DevShareMCLPCS" target="_blank" class="btn btn-primary">Começar Gratuitamente</a>
+            </div>
+
+            <!-- Plano Empresarial (até 5 usuários) -->
+            <div class="plan plan-popular">
+                <h3>Plano Empresarial</h3>
+                <div class="price">Kz 9.000 <span>/mês</span></div>
+                <span>até 5 usuários</span>
+                <ul class="plan-features">
+                    <li>Dashboard empresarial completa</li>
+                    <li>Gestão de tarefas e equipes</li>
+                    <li>Relatórios de produtividade</li>
+                    <li>Gerenciamento de múltiplos projetos</li>
+                    <li>Suporte prioritário</li>
+                </ul>
+                <a href="#" class="btn btn-primary">Contratar para minha Empresa</a>
+            </div>
+
+            <!-- Empresas com mais de 5 usuários -->
+            <div class="plan">
+                <h3>Plano Empresarial Plus</h3>
+                <div class="price">Kz 18.000 <span>/mês</span></div>
+                <span>mais de 5 usuários</span>
+                <ul class="plan-features">
+                    <li>Todas as funcionalidades do plano empresarial</li>
+                    <li>Usuários ilimitados</li>
+                    <li>API para integração</li>
+                    <li>Suporte 24/7</li>
+                    <li>Atendimento personalizado</li>
+                </ul>
+                <a href="#" class="btn btn-primary">Falar com Vendas</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto para transformar seu trabalho remoto?</h2>
+                <p>Experimente o POMTO hoje mesmo e descubra uma nova forma de trabalhar com mais saúde, segurança e produtividade.</p>
+                <a href="https://apps.microsoft.com/store/detail/9N852P6N7NKM?cid=DevShareMCLPCS" target="_blank" class="btn btn-primary">Baixar Agora</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>POMTO</h3>
+                    <p>Trabalho remoto com segurança, saúde e confiança.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#features">Funcionalidades</a></li>
+                        <li><a href="#demo">Demo</a></li>
+                        <li><a href="#screenshots">Screenshots</a></li>
+                        <li><a href="#pricing">Planos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Suporte</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Documentação</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul class="footer-links">
+                        <li>Email: eliezerafonso51@gmail.com</li>
+                        <li>Telefone: 944-610-560</li>
+                        <li>Eliézer Paulo de Almeida Afonso</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 POMTO - Todos os direitos reservados | <a style="color: rgba(255, 255, 255, 0.6);" href="https://www.freepik.com/free-photo/man-african-ethnicity-using-conference-webcam-communication_16149820.htm#fromView=image_search_similar&page=1&position=2&uuid=2c3e99af-b92e-4254-8443-91ecf761991c&query=Trabalho+remoto">Image by DC Studio on Freepik</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
