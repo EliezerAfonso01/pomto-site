@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POMTO Blog - Artigos sobre Trabalho Remoto</title>
+    <link rel="icon" href="assets/pomto_icon.png" type="image/png">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary-color: #3f37c9;
+            --accent-color: #6c9bd1;
+            --accent-dark: #5a8bc4;
+            --text-color: #2c3e50;
+            --light-color: #f7f9fc;
+            --dark-color: #1a1d23;
+            --light-gray: #ecf0f3;
+            --card-bg: #ffffff;
+            --soft-blue: #e8f2ff;
+            --muted-text: #6c757d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-color);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.5rem 1rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .has-submenu {
+            position: relative;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--primary-color);
+            list-style: none;
+            padding: 0.5rem 0;
+            min-width: 150px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+        }
+
+        .submenu li {
+            margin: 0;
+        }
+
+        .submenu a {
+            display: block;
+            padding: 0.5rem 1rem;
+            white-space: nowrap;
+        }
+
+        .has-submenu:hover .submenu {
+            display: block;
+        }
+
+        /* Mobile styles */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            color: white;
+            font-size: 1.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/blog_hero.jpg') center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .page-header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .blog-carousel {
+            margin-bottom: 4rem;
+        }
+
+        .carousel-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .carousel-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 500%;
+        }
+
+        .carousel-slide {
+            flex: 0 0 20%;
+            box-sizing: border-box;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-card-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .blog-card-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .blog-card-content {
+            padding: 1.5rem;
+        }
+
+        .blog-card-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .blog-card-excerpt {
+            color: var(--muted-text);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .blog-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--muted-text);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-nav:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .carousel-prev {
+            left: 15px;
+        }
+
+        .carousel-next {
+            right: 15px;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 2rem;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--light-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: var(--primary-color);
+        }
+
+        .article-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--light-gray);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--muted-text);
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .modal-meta {
+            display: flex;
+            gap: 2rem;
+            color: var(--muted-text);
+            font-size: 0.9rem;
+        }
+
+        .modal-body {
+            padding: 2rem;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .modal-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        .modal-text h3 {
+            color: var(--primary-color);
+            margin: 2rem 0 1rem;
+            font-size: 1.4rem;
+        }
+
+        .modal-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-text ul {
+            margin: 1rem 0 1.5rem 2rem;
+        }
+
+        .modal-text li {
+            margin-bottom: 0.5rem;
+        }
+
+        .categories-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 0.8rem 1.5rem;
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                background: var(--primary-color);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                display: none;
+            }
+
+            .nav-links li {
+                margin: 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links li a {
+                padding: 1rem;
+                display: block;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .submenu {
+                position: static;
+                background: var(--secondary-color);
+                box-shadow: none;
+            }
+
+            .has-submenu:hover .submenu {
+                display: none;
+            }
+
+            .has-submenu.open .submenu {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .carousel-nav {
+                display: none;
+            }
+
+            .carousel-slide {
+                flex: 0 0 100%;
+            }
+
+            .modal-content {
+                width: 95%;
+                max-height: 95vh;
+            }
+
+            .modal-header {
+                padding: 1.5rem;
+            }
+
+            .modal-body {
+                padding: 1.5rem;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo-container">
+                <img src="assets/pomto_icon.png" class="logo-image" alt="Logotipo do POMTO">
+                <span class="logo-text">POMTO</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Menu">&#9776;</button>
+            <ul class="nav-links">
+                <li class="has-submenu">
+                    <a href="#">Produto</a>
+                    <ul class="submenu">
+                        <li><a href="#problems">Problemas</a></li>
+                        <li><a href="#features">Como Funciona</a></li>
+                        <li><a href="#demo">Demo</a></li>
+                    </ul>
+                </li>
+                <li><a href="#pricing">Planos</a></li>
+                <li><a href="#empresas">Empresas</a></li>
+                <li><a href="pomto_faq.html">FAQ</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>📖 Blog POMTO</h1>
+            <p>Dicas, insights e tendências sobre trabalho remoto, produtividade e bem-estar digital</p>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="categories-filter">
+            <button class="category-btn active" data-category="all">Todos</button>
+            <button class="category-btn" data-category="produtividade">Produtividade</button>
+            <button class="category-btn" data-category="saude">Saúde Digital</button>
+            <button class="category-btn" data-category="trabalho-remoto">Trabalho Remoto</button>
+            <button class="category-btn" data-category="tecnologia">Tecnologia</button>
+        </div>
+
+        <section class="blog-carousel" id="blog">
+            <div class="carousel-header">
+                <h2>Artigos em Destaque</h2>
+                <p>Explore nossos conteúdos mais populares e recentes</p>
+            </div>
+
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide">
+                        <div class="blog-card" data-article="1" data-category="saude">
+                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                                <span class="blog-card-category">Saúde Digital</span>
+                            </div>
+                            <div class="blog-card-content">
+                                <h3 class="blog-card-title">5 Sinais de que Estás a Trabalhar Demais (e como evitar o
+                                    burnout remoto)</h3>
+                                <p class="blog-card-excerpt">O trabalho remoto pode parecer mais leve, mas facilmente
+                                    leva à exaustão se não forem estabelecidos limites...</p>
+                                <div class="blog-card-meta">
+                                    <span>📅 20 Mai 2025</span>
+                                    <span>⏱️ 4 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="blog-card" data-article="2" data-category="produtividade">
+                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                                <span class="blog-card-category">Produtividade Ética</span>
+                            </div>
+                            <div class="blog-card-content">
+                                <h3 class="blog-card-title">Como o POMTO Te Ajuda a Provar o Teu Valor no Trabalho
+                                    Remoto</h3>
+                                <p class="blog-card-excerpt">Um dos maiores desafios do trabalho remoto é demonstrar o
+                                    valor do teu trabalho quando não és fisicamente visível...</p>
+                                <div class="blog-card-meta">
+                                    <span>📅 18 Mai 2025</span>
+                                    <span>⏱️ 5 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="blog-card" data-article="3" data-category="tecnologia">
+                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                                <span class="blog-card-category">Carreira & Inovação</span>
+                            </div>
+                            <div class="blog-card-content">
+                                <h3 class="blog-card-title">Novo no POMTO: Cria o Teu CV com Estatísticas Reais de
+                                    Produtividade</h3>
+                                <p class="blog-card-excerpt">Imagina apresentar um CV que não só lista as tuas
+                                    competências, mas prova-as com dados reais...</p>
+                                <div class="blog-card-meta">
+                                    <span>📅 17 Mai 2025</span>
+                                    <span>⏱️ 4 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="blog-card" data-article="4" data-category="tecnologia">
+                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                                <span class="blog-card-category">Tecnologia</span>
+                            </div>
+                            <div class="blog-card-content">
+                                <h3 class="blog-card-title">POMTO Plugin: Integração Fácil com as Ferramentas que Já
+                                    Usas</h3>
+                                <p class="blog-card-excerpt">Quantas aplicações tens abertas neste momento? Slack,
+                                    Trello, Notion, Gmail, calendário, editor de código...</p>
+                                <div class="blog-card-meta">
+                                    <span>📅 16 Mai 2025</span>
+                                    <span>⏱️ 5 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="blog-card" data-article="5" data-category="produtividade">
+                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                                <span class="blog-card-category">Produtividade Pessoal</span>
+                            </div>
+                            <div class="blog-card-content">
+                                <h3 class="blog-card-title">LazyCopy: Geração Rápida de Pastas, Ficheiros e Templates
+                                </h3>
+                                <p class="blog-card-excerpt">Quantas vezes já perdeste tempo a criar a mesma estrutura
+                                    de pastas? A copiar ficheiros base?...</p>
+                                <div class="blog-card-meta">
+                                    <span>📅 14 Mai 2025</span>
+                                    <span>⏱️ 4 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="blog-card" data-article="6" data-category="saude">
+                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                                <span class="blog-card-category">Saúde e Foco</span>
+                            </div>
+                            <div class="blog-card-content">
+                                <h3 class="blog-card-title">Coruja Remoto: Bem-estar Inteligente no Teu Dia a Dia</h3>
+                                <p class="blog-card-excerpt">Trabalhar remotamente pode ser libertador, mas também
+                                    perigoso para a tua saúde...</p>
+                                <div class="blog-card-meta">
+                                    <span>📅 13 Mai 2025</span>
+                                    <span>⏱️ 4 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="blog-card" data-article="7" data-category="trabalho-remoto">
+                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                                <span class="blog-card-category">Ética Digital</span>
+                            </div>
+                            <div class="blog-card-content">
+                                <h3 class="blog-card-title">Estás a Ser Vigiado ou Acompanhado? O POMTO Faz a Diferença
+                                </h3>
+                                <p class="blog-card-excerpt">A linha entre monitorização produtiva e vigilância invasiva
+                                    tornou-se perigosamente ténue...</p>
+                                <div class="blog-card-meta">
+                                    <span>📅 11 Mai 2025</span>
+                                    <span>⏱️ 5 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="blog-card" data-article="8" data-category="trabalho-remoto">
+                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                                <span class="blog-card-category">Trabalho Remoto</span>
+                            </div>
+                            <div class="blog-card-content">
+                                <h3 class="blog-card-title">Trabalho Remoto em África: Oportunidade ou Armadilha?</h3>
+                                <p class="blog-card-excerpt">África está no epicentro de uma revolução digital
+                                    silenciosa. Com uma população jovem, crescente penetração da internet...</p>
+                                <div class="blog-card-meta">
+                                    <span>📅 09 Mai 2025</span>
+                                    <span>⏱️ 6 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="blog-card" data-article="9" data-category="trabalho-remoto">
+                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                                <span class="blog-card-category">Análise de Dados</span>
+                            </div>
+                            <div class="blog-card-content">
+                                <h3 class="blog-card-title">Estatísticas Que Falam: O Que o POMTO Diz Sobre Ti</h3>
+                                <p class="blog-card-excerpt">Números não mentem. Enquanto as palavras podem ser
+                                    interpretadas, manipuladas ou esquecidas, os dados contam a história real...</p>
+                                <div class="blog-card-meta">
+                                    <span>📅 08 Mai 2025</span>
+                                    <span>⏱️ 3 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="blog-card" data-article="10">
+                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                                <span class="blog-card-category">Vida Real</span>
+                            </div>
+                            <div class="blog-card-content">
+                                <h3 class="blog-card-title">O Desafio de Trabalhar em Casa com Baixa Internet e Muito
+                                    Barulho</h3>
+                                <p class="blog-card-excerpt">A realidade do trabalho remoto não é sempre um escritório
+                                    Pinterest-perfect com luz natural e silêncio monástico...</p>
+                                <div class="blog-card-meta">
+                                    <span>📅 06 Mai 2025</span>
+                                    <span>⏱️ 4 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <button class="carousel-nav carousel-prev" id="prevBtn">‹</button>
+                <button class="carousel-nav carousel-next" id="nextBtn">›</button>
+            </div>
+
+            <div class="carousel-indicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+                <span class="indicator" data-slide="3"></span>
+                <span class="indicator" data-slide="4"></span>
+                <span class="indicator" data-slide="5"></span>
+                <span class="indicator" data-slide="6"></span>
+                <span class="indicator" data-slide="7"></span>
+                <span class="indicator" data-slide="8"></span>
+                <span class="indicator" data-slide="9"></span>
+                <span class="indicator" data-slide="10"></span>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal para leitura do artigo -->
+    <div class="article-modal" id="articleModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" id="closeModal">×</button>
+                <h2 class="modal-title" id="modalTitle">Título do Artigo</h2>
+                <div class="modal-meta">
+                    <span id="modalDate">📅 Data</span>
+                    <span id="modalReadTime">⏱️ Tempo de Leitura</span>
+                    <span id="modalCategory">🏷️ Categoria</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image" id="modalImage"></div>
+                <div class="modal-text" id="modalText">
+                    <!-- Conteúdo do artigo será inserido aqui -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dados dos artigos
+        const articles = {
+            1: {
+                title: "5 Sinais de que Estás a Trabalhar Demais (e como evitar o burnout remoto)",
+                date: "20 Mai 2025",
+                readTime: "4 min",
+                category: "Saúde Digital",
+                image: "/api/placeholder/800/400",
+                content: `
+      <h3>Estás esgotado?</h3>
+      <p>O trabalho remoto pode parecer mais leve, mas facilmente leva à exaustão se não forem estabelecidos limites. A linha entre vida pessoal e profissional torna-se cada vez mais ténue quando o escritório é em casa. Aqui estão 5 sinais de alerta para evitares o burnout:</p>
+      
+      <h4>Os 5 Sinais de Alarme:</h4>
+      <ul>
+        <li><strong>Fadiga constante mesmo após o descanso</strong> - Quando acordas já cansado e o sono não restaura a tua energia</li>
+        <li><strong>Falta de motivação e apatia</strong> - Perdes o entusiasmo por projetos que antes te empolgavam</li>
+        <li><strong>Falta de concentração</strong> - Dificuldade em manter o foco por mais de 20-30 minutos seguidos</li>
+        <li><strong>Irritabilidade com pequenas coisas</strong> - Reações desproporcionais a problemas técnicos ou interrupções menores</li>
+        <li><strong>Trabalho fora do horário com culpa constante</strong> - Sentes-te culpado por parar de trabalhar, mesmo fora do expediente</li>
+      </ul>
+      
+      <h4>Estratégias de Prevenção:</h4>
+      <p>O burnout não acontece de um dia para o outro. É um processo gradual que pode ser evitado com as ferramentas certas. Estabelecer fronteiras claras entre trabalho e descanso é fundamental para a sustentabilidade da tua carreira remota.</p>
+      
+      <p>Com o POMTO, podes configurar pausas saudáveis automáticas, controlar rigorosamente a tua jornada de trabalho e manter a tua saúde mental em dia através de relatórios que mostram quando estás a ultrapassar os teus limites saudáveis.</p>
+      
+      <blockquote>"A produtividade sustentável é mais valiosa que a produtividade intensa e temporária."</blockquote>
+    `
+            },
+            2: {
+                title: "Como o POMTO Te Ajuda a Provar o Teu Valor no Trabalho Remoto",
+                date: "18 Mai 2025",
+                readTime: "5 min",
+                category: "Produtividade Ética",
+                image: "/api/placeholder/800/400",
+                content: `
+      <h3>Mostra o que realmente fazes</h3>
+      <p>Um dos maiores desafios do trabalho remoto é demonstrar o valor do teu trabalho quando não és fisicamente visível. Muitos gestores ainda associam presença física com produtividade, criando uma necessidade de "prova" constante do teu empenho.</p>
+      
+      <h4>O Problema da Invisibilidade:</h4>
+      <p>No trabalho remoto, o teu esforço pode passar despercebido. Horas de pesquisa, iterações de design, revisões de código, ou sessões de brainstorming não são facilmente quantificáveis. Isso pode resultar em:</p>
+      <ul>
+        <li>Subvalorização do teu trabalho</li>
+        <li>Pressão para trabalhar mais horas</li>
+        <li>Dificuldade em negociar aumentos ou promoções</li>
+        <li>Stress por falta de reconhecimento</li>
+      </ul>
+      
+      <h4>A Solução POMTO:</h4>
+      <p>O POMTO regista automaticamente todas as tuas tarefas e apresenta isso em relatórios visuais elegantes e profissionais. Ao invés de seres vigiado como um suspeito, és valorizado como um profissional. Tu controlas completamente os teus dados e escolhes o que partilhar.</p>
+      
+      <h4>Relatórios que Falam por Ti:</h4>
+      <ul>
+        <li>Tempo dedicado por projeto e cliente</li>
+        <li>Evolução da produtividade ao longo do tempo</li>
+        <li>Tipos de tarefas realizadas e complexidade</li>
+        <li>Padrões de trabalho e picos de eficiência</li>
+        <li>Comparação entre estimativas e tempo real</li>
+      </ul>
+      
+      <p>Com dados concretos, podes mostrar o teu verdadeiro valor ao cliente ou à empresa, negociar com confiança e construir uma reputação baseada em evidências sólidas.</p>
+    `
+            },
+            3: {
+                title: "Novo no POMTO: Cria o Teu CV com Estatísticas Reais de Produtividade",
+                date: "17 Mai 2025",
+                readTime: "4 min",
+                category: "Carreira & Inovação",
+                image: "/api/placeholder/800/400",
+                content: `
+      <h3>O teu trabalho agora fala por ti</h3>
+      <p>Imagina apresentar um CV que não só lista as tuas competências, mas prova-as com dados reais. O CV tradicional está morto - chegou a era dos CVs baseados em evidências.</p>
+      
+      <h4>Revolução no Recrutamento:</h4>
+      <p>Os recrutadores recebem centenas de CVs idênticos, cheios de "soft skills" impossíveis de verificar. Como te destacas numa multidão de "excelente comunicador" e "trabalho em equipa"?</p>
+      
+      <h4>CV Pro: O Futuro dos Currículos</h4>
+      <p>Com o CV Pro, o POMTO transforma os teus dados de produtividade reais em relatórios de competências verificáveis. Cria automaticamente um CV inovador com:</p>
+      
+      <ul>
+        <li><strong>Gráficos de produtividade</strong> - Mostra a tua evolução ao longo do tempo</li>
+        <li><strong>Tempo por ferramenta</strong> - Demonstra domínio técnico real (Photoshop: 847h, VS Code: 1.240h)</li>
+        <li><strong>Tarefas executadas</strong> - Portfolio quantificado de projetos completados</li>
+        <li><strong>Padrões de trabalho</strong> - Horários de maior eficiência e consistência</li>
+        <li><strong>Gestão de tempo</strong> - Capacidade de cumprir prazos e estimativas</li>
+        <li><strong>Versatilidade</strong> - Diversidade de projetos e adaptabilidade</li>
+      </ul>
+      
+      <h4>Exemplos Práticos:</h4>
+      <blockquote>
+      "Desenvolvedor Full-Stack com 1.200+ horas documentadas em React (últimos 12 meses), 
+      95% de cumprimento de prazos e média de 6.5h/dia de código produtivo."
+      </blockquote>
+      
+      <p>Deixa de competir com palavras vazias. Compete com resultados reais.</p>
+    `
+            },
+            4: {
+                title: "POMTO Plugin: Integração Fácil com as Ferramentas que Já Usas",
+                date: "16 Mai 2025",
+                readTime: "5 min",
+                category: "Tecnologia",
+                image: "/api/placeholder/800/400",
+                content: `
+      <h3>Menos janelas, mais foco</h3>
+      <p>Quantas aplicações tens abertas neste momento? Slack, Trello, Notion, Gmail, calendário, editor de código... A fragmentação digital é um dos maiores inimigos da produtividade moderna.</p>
+      
+      <h4>O Caos das Múltiplas Ferramentas:</h4>
+      <p>O trabalhador médio usa 15-20 aplicações diferentes por dia, mudando de contexto a cada 3 minutos. Isso resulta em:</p>
+      <ul>
+        <li>Perda de contexto constante</li>
+        <li>Informação dispersa em múltiplas plataformas</li>
+        <li>Dificuldade em rastrear progresso</li>
+        <li>Stress mental de gestão de múltiplas interfaces</li>
+        <li>Tempo perdido em procurar informações</li>
+      </ul>
+      
+      <h4>Plugin POMTO: Unificação Inteligente</h4>
+      <p>Com o plugin do POMTO, podes integrar facilmente as tuas ferramentas favoritas num dashboard centralizado:</p>
+      
+      <h5>Integrações Disponíveis:</h5>
+      <ul>
+        <li><strong>Trello & Asana</strong> - Sincronização automática de tarefas e prazos</li>
+        <li><strong>Notion & Obsidian</strong> - Rastreamento de tempo de escrita e pesquisa</li>
+        <li><strong>Slack & Teams</strong> - Monitorização de comunicação produtiva vs. distração</li>
+        <li><strong>GitHub & GitLab</strong> - Análise de commits e tempo de desenvolvimento</li>
+        <li><strong>Figma & Adobe</strong> - Tracking de tempo criativo e iterações</li>
+        <li><strong>Google Workspace</strong> - Integração com calendário e documentos</li>
+      </ul>
+      
+      <h4>Benefícios da Centralização:</h4>
+      <p>Tudo num só dashboard, sem perderes o rasto das tuas entregas e prazos. Vês o panorama completo do teu trabalho numa interface limpa e intuitiva.</p>
+      
+      <h5>Funcionalidades Smart:</h5>
+      <ul>
+        <li>Sincronização automática de deadlines</li>
+        <li>Notificações unificadas</li>
+        <li>Relatórios cross-platform</li>
+        <li>Análise de padrões entre ferramentas</li>
+        <li>Backup automático de configurações</li>
+      </ul>
+      
+      <p>Transforma o caos digital em ordem produtiva.</p>
+    `
+            },
+            5: {
+                title: "LazyCopy: Geração Rápida de Pastas, Ficheiros e Templates",
+                date: "14 Mai 2025",
+                readTime: "4 min",
+                category: "Produtividade Pessoal",
+                image: "/api/placeholder/800/400",
+                content: `
+      <h3>Organiza-te como um profissional</h3>
+      <p>Quantas vezes já perdeste tempo a criar a mesma estrutura de pastas? A copiar ficheiros base? A renomear dezenas de ficheiros manualmente? O LazyCopy elimina essas tarefas repetitivas da tua vida.</p>
+      
+      <h4>O Problema da Repetição:</h4>
+      <p>Profissionais criativos e técnicos gastam 15-20% do seu tempo em tarefas organizacionais básicas:</p>
+      <ul>
+        <li>Criar estruturas de projeto idênticas</li>
+        <li>Renomear ficheiros seguindo padrões</li>
+        <li>Copiar templates e configurações</li>
+        <li>Organizar assets por categorias</li>
+        <li>Manter consistência em nomenclaturas</li>
+      </ul>
+      
+      <h4>LazyCopy: Automação Inteligente</h4>
+      <p>O LazyCopy é uma aplicação poderosa para quem precisa criar ficheiros e pastas com rapidez e lógica. Não é apenas um copiador - é um sistema inteligente de organização.</p>
+      
+      <h5>Funcionalidades Principais:</h5>
+      <ul>
+        <li><strong>Prefixos e Sufixos Inteligentes</strong> - Adiciona automaticamente datas, versões, categorias</li>
+        <li><strong>Processamento em Lote</strong> - Renomeia, copia e organiza centenas de ficheiros simultaneamente</li>
+        <li><strong>Templates Personalizados</strong> - Cria modelos para diferentes tipos de projeto</li>
+        <li><strong>Regras Condicionais</strong> - "Se é imagem, vai para /assets/img/"</li>
+        <li><strong>Histórico e Undo</strong> - Desfaz operações em massa com segurança</li>
+        <li><strong>Integração com Cloud</strong> - Funciona com Google Drive, Dropbox, OneDrive</li>
+      </ul>
+      
+      <h4>Casos de Uso Reais:</h4>
+      
+      <h5>Para Programadores:</h5>
+      <ul>
+        <li>Estruturas de projeto automatizadas</li>
+        <li>Organização de componentes por funcionalidade</li>
+        <li>Versionamento automático de builds</li>
+      </ul>
+      
+      <h5>Para Designers:</h5>
+      <ul>
+        <li>Organização de assets por cliente/projeto</li>
+        <li>Versionamento de iterações de design</li>
+        <li>Estruturas consistentes para handoff</li>
+      </ul>
+      
+      <h5>Para Criadores de Conteúdo:</h5>
+      <ul>
+        <li>Organização de media por tema/data</li>
+        <li>Templates para diferentes tipos de conteúdo</li>
+        <li>Backup automático com nomenclatura consistente</li>
+      </ul>
+      
+      <p>Ideal para qualquer profissional que valoriza organização e eficiência. Porque o teu tempo é melhor gasto criando, não organizando.</p>
+    `
+            },
+            6: {
+                title: "Coruja Remoto: Bem-estar Inteligente no Teu Dia a Dia",
+                date: "13 Mai 2025",
+                readTime: "4 min",
+                category: "Saúde e Foco",
+                image: "/api/placeholder/800/400",
+                content: `
+      <h3>O teu companheiro de jornada</h3>
+      <p>Trabalhar remotamente pode ser libertador, mas também perigoso para a tua saúde. Sem colegas para te lembrarem de fazer uma pausa, sem uma cantina para te forçar a parar para almoçar, é fácil negligenciar o básico.</p>
+      
+      <h4>Os Perigos Silenciosos do Remote:</h4>
+      <ul>
+        <li><strong>Desidratação</strong> - Esqueces-te de beber água por horas</li>
+        <li><strong>Postura prejudicial</strong> - Horas na mesma posição causam dores crónicas</li>
+        <li><strong>Fadiga ocular</strong> - Ecrãs constantes sem descanso visual</li>
+        <li><strong>Isolamento social</strong> - Dias inteiros sem interação humana significativa</li>
+        <li><strong>Ciclos de sono perturbados</strong> - Trabalhar até tarde sem rotina fixa</li>
+        <li><strong>Alimentação irregular</strong> - Pular refeições ou comer enquanto trabalha</li>
+      </ul>
+      
+      <h4>Coruja Remoto: Cuidado Proativo</h4>
+      <p>O modo Coruja Remoto funciona como uma mãe atenta e um coach pessoal combinados. Não é invasivo nem irritante - é genuinamente preocupado com o teu bem-estar.</p>
+      
+      <h5>Funcionalidades de Bem-estar:</h5>
+      
+      <h6>Hidratação Inteligente:</h6>
+      <ul>
+        <li>Lembretes personalizados baseados no teu padrão de trabalho</li>
+        <li>Ajuste automático para clima e atividade</li>
+        <li>Tracking visual do teu consumo diário</li>
+      </ul>
+      
+      <h6>Pausas Estratégicas:</h6>
+      <ul>
+        <li>Micro-pausas de 30 segundos para olhos e postura</li>
+        <li>Pausas de movimento a cada 45-60 minutos</li>
+        <li>Pausas longas respeitando teu flow state</li>
+      </ul>
+      
+      <h6>Motivação Personalizada:</h6>
+      <ul>
+        <li>Mensagens inspiradoras baseadas no teu progresso</li>
+        <li>Celebração de pequenas vitórias diárias</li>
+        <li>Lembretes gentis sobre objetivos pessoais</li>
+      </ul>
+      
+      <h6>Alertas Personalizados:</h6>
+      <ul>
+        <li>Detecção de padrões prejudiciais</li>
+        <li>Sugestões de ajuste na rotina</li>
+        <li>Alertas de overwork baseados nos teus limites</li>
+      </ul>
+      
+      <h4>Diferencial da Coruja:</h4>
+      <blockquote>
+      "Não é apenas um timer com notificações chatas. É um sistema que aprende contigo e adapta-se às tuas necessidades reais."
+      </blockquote>
+      
+      <p>A Coruja Remoto entende que cada pessoa é única. Adapta-se ao teu ritmo, respeita os teus momentos de foco intenso, e intervém apenas quando realmente precisas.</p>
+      
+      <p>Cuida de ti enquanto trabalhas para o mundo. Porque produtividade sem saúde não é sustentável.</p>
+    `
+            },
+            7: {
+                title: "Estás a Ser Vigiado ou Acompanhado? O POMTO Faz a Diferença",
+                date: "11 Mai 2025",
+                readTime: "5 min",
+                category: "Ética Digital",
+                image: "/api/placeholder/800/400",
+                content: `
+      <h3>Privacidade é respeito</h3>
+      <p>A linha entre monitorização produtiva e vigilância invasiva tornou-se perigosamente ténue. Muitas empresas implementam ferramentas que transformam funcionários em suspeitos, criando ambientes de trabalho tóxicos disfarçados de "otimização de performance".</p>
+      
+      <h4>O Problema da Vigilância Digital:</h4>
+      
+      <h5>Ferramentas Invasivas Comuns:</h5>
+      <ul>
+        <li><strong>Screenshots aleatórias</strong> - Capturam o teu ecrã sem aviso prévio</li>
+        <li><strong>Keyloggers</strong> - Registam tudo o que escreves, incluindo passwords</li>
+        <li><strong>Webcam monitoring</strong> - Tiram fotos tuas durante o trabalho</li>
+        <li><strong>Browser tracking</strong> - Monitorizem cada site que visitas</li>
+        <li><strong>Activity scoring</strong> - Atribuem pontuações baseadas em movimentos do rato</li>
+        <li><strong>Tempo de inatividade</strong> - Penalizam pausas naturais e necessárias</li>
+      </ul>
+      
+      <h4>Impacto Psicológico da Vigilância:</h4>
+      <ul>
+        <li>Stress constante e ansiedade</li>
+        <li>Perda de autonomia e confiança</li>
+        <li>Deterioração da criatividade</li>
+        <li>Relações de trabalho baseadas em desconfiança</li>
+        <li>Burnout acelerado</li>
+        <li>Perda de talento qualificado</li>
+      </ul>
+      
+      <h4>A Filosofia POMTO: Acompanhamento vs. Vigilância</h4>
+      
+      <h5>O que o POMTO NÃO faz:</h5>
+      <ul>
+        <li>❌ Não grava o teu ecrã</li>
+        <li>❌ Não tira screenshots sem permissão</li>
+        <li>❌ Não regista teclas pressionadas</li>
+        <li>❌ Não acede à tua webcam</li>
+        <li>❌ Não monitora sites pessoais</li>
+        <li>❌ Não partilha dados sem o teu consentimento</li>
+      </ul>
+      
+      <h5>O que o POMTO faz:</h5>
+      <ul>
+        <li>✅ Foca-se em tarefas e objetivos</li>
+        <li>✅ Respeita pausas e tempo pessoal</li>
+        <li>✅ Dá-te controlo total dos teus dados</li>
+        <li>✅ Promove transparência voluntária</li>
+        <li>✅ Celebra produtividade sustentável</li>
+        <li>✅ Protege a tua privacidade</li>
+      </ul>
+      
+      <h4>Transparência vs. Invasão:</h4>
+      <blockquote>
+      "Transparência é quando escolhes o que partilhar. Invasão é quando não tens escolha."
+      </blockquote>
+      
+      <h5>Princípios POMTO:</h5>
+      <ul>
+        <li><strong>Consentimento Informado</strong> - Sabes exatamente o que é medido</li>
+        <li><strong>Controlo de Dados</strong> - Tu decides o que partilhar e com quem</li>
+        <li><strong>Contextualização</strong> - Dados têm significado, não são apenas números</li>
+        <li><strong>Benefício Mútuo</strong> - Tanto tu como a empresa beneficiam</li>
+        <li><strong>Respeito Humano</strong> - És tratado como profissional, não como suspeito</li>
+      </ul>
+      
+      <h4>O Futuro do Trabalho:</h4>
+      <p>O trabalho remoto bem-sucedido baseia-se em confiança, não em vigilância. Empresas que adoptam abordagens respeitosas atraem e retêm melhor talento. Funcionários que se sentem respeitados são naturalmente mais produtivos e leais.</p>
+      
+      <p>A tua liberdade continua tua. O POMTO apenas te ajuda a mostrar o teu valor profissional de forma transparente e voluntária.</p>
+    `
+            },
+            8: {
+                title: "Trabalho Remoto em África: Oportunidade ou Armadilha?",
+                date: "09 Mai 2025",
+                readTime: "6 min",
+                category: "Trabalho Remoto",
+                image: "/api/placeholder/800/400",
+                content: `
+      <h3>Um futuro digital</h3>
+      <p>África está no epicentro de uma revolução digital silenciosa. Com uma população jovem, crescente penetração da internet e uma fome empresarial impressionante, o continente posiciona-se para ser o próximo hub global de talento remoto. Mas será oportunidade ou armadilha?</p>
+      
+      <h4>O Contexto Africano:</h4>
+      
+      <h5>Potencial Extraordinário:</h5>
+      <ul>
+        <li><strong>População jovem</strong> - 60% da população tem menos de 25 anos</li>
+        <li><strong>Crescimento mobile</strong> - Salto tecnológico direto para smartphones</li>
+        <li><strong>Talento multilíngue</strong> - Vantagem competitiva em mercados globais</li>
+        <li><strong>Fuso horário estratégico</strong> - Sobreposição com Europa, Ásia e América</li>
+        <li><strong>Custo competitivo</strong> - Valor excepcional para empresas internacionais</li>
+        <li><strong>Empreendedorismo</strong> - Cultura de inovação e adaptabilidade</li>
+      </ul>
+      
+      <h4>Desafios Reais:</h4>
+      
+      <h5>Infraestrutura:</h5>
+      <ul>
+        <li>Internet instável e cara em muitas regiões</li>
+        <li>Cortes de energia frequentes</li>
+        <li>Falta de espaços coworking em cidades menores</li>
+        <li>Acesso limitado a hardware atualizado</li>
+      </ul>
+      
+      <h5>Barreiras Sistémicas:</h5>
+      <ul>
+        <li>Sistemas de pagamento internacionais complexos</li>
+        <li>Falta de reconhecimento de certificações locais</li>
+        <li>Preconceitos no mercado global</li>
+        <li>Diferenças culturais e de expectativas</li>
+      </ul>
+      
+      <h4>Casos de Sucesso Emergentes:</h4>
+      
+      <h5>Nigéria - "Silicon Valley Africano":</h5>
+      <ul>
+        <li>Lagos como hub de fintech</li>
+        <li>Startups avaliadas em biliões</li>
+        <li>Talento técnico reconhecido globalmente</li>
+      </ul>
+      
+      <h5>África do Sul - Gateway Estabelecido:</h5>
+      <ul>
+        <li>Infraestrutura desenvolvida</li>
+        <li>Forte tradição em design e marketing</li>
+        <li>Ponte entre África e mercados desenvolvidos</li>
+      </ul>
+      
+      <h5>Quénia - Hub de Inovação:</h5>
+      <ul>
+        <li>Nairobi como "Vale do Silício africano"</li>
+        <li>Pioneiro em mobile money (M-Pesa)</li>
+        <li>Forte comunidade tech</li>
+      </ul>
+      
+      <h4>O Papel das Ferramentas Adequadas:</h4>
+      <p>O sucesso do trabalho remoto em África depende criticamente de ferramentas que entendam e se adaptem à realidade local. Não basta importar soluções desenvolvidas para infraestruturas perfeitas.</p>
+      
+      <h5>Necessidades Específicas:</h5>
+      <ul>
+        <li><strong>Otimização para baixa largura de banda</strong></li>
+        <li><strong>Funcionamento offline</strong> durante cortes de energia</li>
+        <li><strong>Sincronização inteligente</strong> quando a conexão retorna</li>
+        <li><strong>Interface multilíngue</strong> incluindo idiomas locais</li>
+        <li><strong>Adaptação cultural</strong> nos padrões de trabalho</li>
+        <li><strong>Preços acessíveis</strong> em moedas locais</li>
+      </ul>
+      
+      <h4>POMTO: Desenvolvido para a Realidade Africana</h4>
+      <p>O POMTO foi concebido com a realidade africana em mente. Não é uma ferramenta ocidental adaptada - é uma solução que compreende os desafios únicos do continente:</p>
+      
+      <ul>
+        <li>Funciona com internet intermitente</li>
+        <li>Armazena dados localmente durante interruções</li>
+        <li>Interface otimizada para dispositivos de gama média</li>
+        <li>Relatórios que funcionam mesmo offline</li>
+        <li>Suporte para diferentes moedas e contextos económicos</li>
+      </ul>
+      
+      <h4>Oportunidades vs. Armadilhas:</h4>
+      
+      <h5>Oportunidades:</h5>
+      <ul>
+        <li>Acesso a mercados globais sem sair de casa</li>
+        <li>Desenvolvimento de competências de classe mundial</li>
+        <li>Construção de networks internacionais</li>
+        <li>Contribuição para economia local com divisas estrangeiras</li>
+        <li>Flexibilidade e equilíbrio vida-trabalho</li>
+      </ul>
+      
+      <h5>Armadilhas a Evitar:</h5>
+      <ul>
+        <li>Subvalorização sistemática do trabalho africano</li>
+        <li>Dependência excessiva de plataformas externas</li>
+        <li>Falta de proteções laborais adequadas</li>
+        <li>Isolamento profissional e social</li>
+        <li>Burnout por sobrecarga de trabalho</li>
+      </ul>
+      
+      <h4>O Futuro é Agora:</h4>
+      <p>África não é o "futuro" do trabalho remoto - é o presente. Com as ferramentas certas, mindset adequado e apoio sistémico, profissionais africanos estão já a competir e vencer no mercado global.</p>
+      
+      <blockquote>
+      "O talento é universal. A oportunidade não é. O trabalho remoto pode ser o grande equalizador que África precisa."
+      </blockquote>
+    `
+            },
+            9: {
+                title: "Estatísticas Que Falam: O Que o POMTO Diz Sobre Ti",
+                date: "08 Mai 2025",
+                readTime: "3 min",
+                category: "Análise de Dados",
+                image: "/api/placeholder/800/400",
+                content: `
+      <h3>Transforma o teu esforço em números</h3>
+      <p>Números não mentem. Enquanto as palavras podem ser interpretadas, manipuladas ou esquecidas, os dados contam a história real do teu trabalho. O POMTO transforma a tua jornada profissional numa narrativa visual poderosa.</p>
+      
+      <h4>O Poder dos Dados Pessoais:</h4>
+      <p>Quando sabes exatamente quanto tempo dedicas ao design versus à escrita versus à pesquisa, ganhas uma clareza incrível sobre ti mesmo. Não são apenas números - são insights que mudam a forma como encaras o teu trabalho.</p>
+      
+      <h5>Métricas que Importam:</h5>
+      
+      <h6>Distribuição de Tempo:</h6>
+      <ul>
+        <li><strong>Design:</strong> 35% do teu tempo (280h/mês)</li>
+        <li><strong>Desenvolvimento:</strong> 40% do teu tempo (320h/mês)</li>
+        <li><strong>Reuniões:</strong> 15% do teu tempo (120h/mês)</li>
+        <li><strong>Pesquisa:</strong> 10% do teu tempo (80h/mês)</li>
+      </ul>
+      
+      <h6>Padrões de Produtividade:</h6>
+      <ul>
+        <li>Pico de eficiência: 10h-12h (146% acima da média)</li>
+        <li>Queda natural: 14h-15h (67% da média)</li>
+        <li>Recuperação: 16h-18h (112% da média)</li>
+        <li>Dias mais produtivos: Terça e Quinta</li>
+        <li>Tempo médio de foco: 47 minutos</li>
+      </ul>
+      
+      <h4>Visualizações que Contam Histórias:</h4>
+      
+      <h5>Dashboard Principal:</h5>
+      <ul>
+        <li><strong>Heatmap de Atividade</strong> - Mostra quando és mais produtivo</li>
+        <li><strong>Gráfico de Flow State</strong> - Períodos de foco profundo</li>
+        <li><strong>Distribuição por Projetos</strong> - Onde investiste mais tempo</li>
+        <li><strong>Evolução Mensal</strong> - Crescimento e padrões ao longo do tempo</li>
+        <li><strong>Comparação de Estimativas</strong> - Quão preciso és nas previsões</li>
+      </ul>
+      
+      <h4>Insights Acionáveis:</h4>
+      
+      <h5>Descobertas Comuns:</h5>
+      <ul>
+        <li><strong>"Pensava que gastava muito tempo em reuniões, mas são apenas 12%"</strong></li>
+        <li><strong>"Sou 200% mais produtivo às terças-feiras - vou agendar tarefas complexas nesse dia"</strong></li>
+        <li><strong>"Consigo manter foco por 52 minutos seguidos - vou ajustar meus pomodoros"</strong></li>
+        <li><strong>"Gasto 60% do tempo em revisões - preciso melhorar meu processo inicial"</strong></li>
+      </ul>
+      
+      <h4>Comparações Inteligentes:</h4>
+      
+      <h5>Benchmarks Pessoais:</h5>
+      <ul>
+        <li>Este mês vs. mês anterior</li>
+        <li>Este trimestre vs. mesmo período ano passado</li>
+        <li>Projetos similares: tempo investido vs. resultado</li>
+        <li>Evolução de competências ao longo do tempo</li>
+      </ul>
+      
+      <h5>Contexto de Mercado (Opcional):</h5>
+      <ul>
+        <li>Tempo médio para tarefas similares na tua área</li>
+        <li>Padrões de produtividade por senioridade</li>
+        <li>Benchmarks por tipo de projeto</li>
+      </ul>
+      
+      <h4>Relatórios Personalizados:</h4>
+      
+      <h5>Para Ti:</h5>
+      <ul>
+        <li>Relatório semanal de produtividade</li>
+        <li>Análise mensal de padrões</li>
+        <li>Identificação de oportunidades de melhoria</li>
+        <li>Celebração de conquistas e progressos</li>
+      </ul>
+      
+      <h5>Para Clientes/Chefes:</h5>
+      <ul>
+        <li>Tempo investido por projeto</li>
+        <li>Milestone tracking com timestamps</li>
+        <li>Análise de eficiência e value delivery</li>
+        <li>Transparência completa sobre o processo</li>
+      </ul>
+      
+      <h4>O Impacto dos Dados:</h4>
+      <blockquote>
+      "Quando vês que gastas 3 horas por semana em tarefas que poderiam ser automatizadas, 
+      a decisão de investir numa ferramenta torna-se óbvia."
+      </blockquote>
+      
+      <p>Mais do que dados, ganhas clareza sobre ti mesmo. Entendes os teus ritmos, identificas os teus pontos fortes, e otimizas naturalmente o teu workflow.</p>
+      
+      <h4>Privacidade e Controlo:</h4>
+      <p>Todos estes dados são teus. Tu decides o que partilhar, com quem, e quando. O POMTO nunca vende ou partilha as tuas informações sem o teu consentimento explícito.</p>
+      
+      <p>Os números falam - mas tu controlas a conversa.</p>
+    `
+            },
+            10: {
+                title: "O Desafio de Trabalhar em Casa com Baixa Internet e Muito Barulho",
+                date: "06 Mai 2025",
+                readTime: "4 min",
+                category: "Vida Real",
+                image: "/api/placeholder/800/400",
+                content: `
+      <h3>Quando o ambiente não ajuda</h3>
+      <p>A realidade do trabalho remoto não é sempre um escritório Pinterest-perfect com luz natural e silêncio monástico. Para muitos, é um quarto partilhado, internet que falha, vizinhos barulhentos, e família que não entende que "estar em casa" não significa "estar disponível".</p>
+      
+      <h4>A Realidade Crua:</h4>
+      
+      <h5>Desafios de Infraestrutura:</h5>
+      <ul>
+        <li><strong>Internet instável</strong> - 3 Mbps em bom dia, 0.5 Mbps quando chove</li>
+        <li><strong>Energia inconsistente</strong> - Cortes de luz no meio de calls importantes</li>
+        <li><strong>Hardware limitado</strong> - Laptop de 2018 com 4GB RAM para rodar tudo</li>
+        <li><strong>Espaço partilhado</strong> - Mesa da cozinha como "escritório"</li>
+      </ul>
+      
+      <h5>Desafios Ambientais:</h5>
+      <ul>
+        <li><strong>Ruído constante</strong> - Trânsito, vizinhos, obras, família</li>
+        <li><strong>Interrupções frequentes</strong> - "Só uma perguntinha rápida"</li>
+        <li><strong>Falta de privacidade</strong> - Calls confidenciais no quarto partilhado</li>
+        <li><strong>Temperatura/iluminação</strong> - Sem controlo do ambiente físico</li>
+      </ul>
+      
+      <h4>Mitos vs. Realidade:</h4>
+      
+      <h5>Mito: "Trabalho remoto é mais fácil"</h5>
+      <p><strong>Realidade:</strong> Requer disciplina extra e gestão ativa de distrações que não existem num escritório tradicional.</p>
+      
+      <h5>Mito: "Basta ter internet e um laptop"</h5>
+      <p><strong>Realidade:</strong> Precisas de estratégias específicas para ambientes não-ideais.</p>
+      
+      <h5>Mito: "Quem reclama de barulho/internet não se sabe organizar"</h5>
+      <p><strong>Realidade:</strong> Limitações estruturais são reais e afetam performance objetivamente.</p>
+      
+      <h4>Estratégias de Sobrevivência:</h4>
+      
+      <h5>Para Internet Instável:</h5>
+      <ul>
+        <li><strong>Trabalho offline-first</strong> - Ferramentas que funcionam sem internet</li>
+        <li><strong>Sincronização inteligente</strong> - Upload automático quando conexão melhora</li>
+        <li><strong>Planos B constantes</strong> - Hotspot móvel, café com WiFi, casa de amigo</li>
+        <li><strong>Horários estratégicos</strong> - Aproveitar horas de menor congestionamento da rede</li>
+        <li><strong>Downloads programados</strong> - Materiais necessários baixados durante a madrugada</li>
+      </ul>
+      
+      <h5>Para Ambiente Barulhento:</h5>
+      <ul>
+        <li><strong>Noise-cancelling caseiros</strong> - Fones + white noise + música instrumental</li>
+        <li><strong>Comunicação familiar</strong> - Horários definidos e sinais visuais claros</li>
+        <li><strong>Espaços temporários</strong> - Biblioteca, coworking por horas, carro</li>
+        <li><strong>Adaptação de horários</strong> - Trabalhar quando casa está mais silenciosa</li>
+        <li><strong>Divisórias criativas</strong> - Biombos, cortinas, reorganização do espaço</li>
+      </ul>
+      
+      <h4>POMTO: Feito para Ambientes Reais</h4>
+      <p>O POMTO foi desenvolvido entendendo que nem toda a gente tem um escritório perfeito. A ferramenta adapta-se às tuas limitações reais:</p>
+      
+      <h5>Funcionalidades para Ambientes Desafiantes:</h5>
+      <ul>
+        <li><strong>Modo Offline Completo</strong> - Continua a rastrear mesmo sem internet</li>
+        <li><strong>Sincronização Inteligente</strong> - Envia dados quando conexão permite</li>
+        <li><strong>Baixo Consumo</strong> - Funciona em hardware antigo sem travar</li>
+        <li><strong>Modo Silencioso</strong> - Notificações visuais para ambientes barulhentos</li>
+        <li><strong>Pausas Flexíveis</strong> - Entende interrupções inevitáveis</li>
+        <li><strong>Relatórios de Contexto</strong> - Documenta desafios ambientais nos reports</li>
+      </ul>
+      
+      <h4>Casos de Sucesso Reais:</h4>
+      
+      <h5>Maria, Designer em Luanda:</h5>
+      <blockquote>
+      "Internet falha 3x por dia, mas o POMTO continua a trabalhar. Quando volta, 
+      sincroniza tudo automático. Cliente vê o trabalho real, não os problemas técnicos."
+      </blockquote>
+      
+      <h5>João, Programador em Maputo:</h5>
+      <blockquote>
+      "Trabalho de madrugada porque de dia tem muito barulho. POMTO adapta-se ao meu horário 
+      e mostra que sou produtivo, mesmo com rotina não-convencional."
+      </blockquote>
+      
+      <h4>Dicas Práticas Testadas:</h4>
+      
+      <h5>Setup Mínimo Eficaz:</h5>
+      <ul>
+        <li>Fones com cancelamento de ruído (investimento prioritário)</li>
+        <li>Suporte para laptop (ergonomia básica)</li>
+        <li>Iluminação própria (candeeiro de mesa)</li>
+        <li>Backup power (powerbank para laptop se possível)</li>
+      </ul>
+      
+      <h5>Comunicação com Stakeholders:</h5>
+      <ul>
+        <li>Transparência sobre limitações técnicas</li>
+        <li>Soluções alternativas sempre prontas</li>
+        <li>Demonstração de valor apesar das limitações</li>
+        <li>Updates proativos sobre problemas e soluções</li>
+      </ul>
+      
+      <h4>A Verdade Inconveniente:</h4>
+      <p>Trabalho remoto em condições não-ideais é possível, mas requer ferramentas que entendam essa realidade. Não precisas de fingir que tens um setup perfeito - precisas de soluções que funcionem com o que tens.</p>
+      
+      <blockquote>
+      "Profissionalismo não é ter o escritório perfeito. 
+      É entregar resultados de qualidade apesar das limitações."
+      </blockquote>
+      
+      <p>O POMTO ajuda-te a manter a concentração e produtividade mesmo quando o ambiente não colabora. Porque talento não precisa de condições perfeitas - precisa das ferramentas certas.</p>
+    `
+            }
+        };
+
+
+        let currentSlide = 0;
+        let totalSlides = 10;
+        let autoPlayInterval = null;
+        let track = null;
+        let indicators = [];
+        let modal = null;
+        let modalTitle = null;
+        let modalDate = null;
+        let modalReadTime = null;
+        let modalCategory = null;
+        let modalImage = null;
+        let modalText = null;
+        let closeModal = null;
+
+        // Função de inicialização
+        function init() {
+            track = document.getElementById('carouselTrack');
+            indicators = document.querySelectorAll('.indicator');
+            modal = document.getElementById('articleModal');
+            modalTitle = document.getElementById('modalTitle');
+            modalDate = document.getElementById('modalDate');
+            modalReadTime = document.getElementById('modalReadTime');
+            modalCategory = document.getElementById('modalCategory');
+            modalImage = document.getElementById('modalImage');
+            modalText = document.getElementById('modalText');
+            closeModal = document.getElementById('closeModal');
+
+            if (!track || indicators.length === 0) {
+                console.error('Elementos do carrossel não encontrados');
+                return;
+            }
+
+            bindEvents();
+            startAutoPlay();
+        }
+
+        // Bind dos eventos
+        function bindEvents() {
+            // Navegação
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtn = document.getElementById('prevBtn');
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', next);
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', prev);
+            }
+
+            // Indicadores
+            for (let i = 0; i < indicators.length; i++) {
+                indicators.forEach((indicator, i) => {
+                    indicator.addEventListener('click', function () {
+                        goTo(i); // Cada bolinha leva ao slide exato
+                    });
+                });
+            }
+
+            // Eventos do modal
+            bindModalEvents();
+        }
+
+        // Próximo slide
+        function next() {
+            const maxSlide = totalSlides - 1;
+            currentSlide = currentSlide < maxSlide ? currentSlide + 1 : 0;
+            updateCarousel();
+            restartAutoPlay();
+        }
+
+        function prev() {
+            const maxSlide = totalSlides - 1;
+            currentSlide = currentSlide > 0 ? currentSlide - 1 : maxSlide;
+            updateCarousel();
+            restartAutoPlay();
+        }
+
+        function goTo(index) {
+            currentSlide = index;
+            updateCarousel();
+            restartAutoPlay();
+        }
+
+        function restartAutoPlay() {
+            stopAutoPlay();
+            startAutoPlay();
+        }
+
+        function startAutoPlay() {
+            stopAutoPlay(); // Garante que não duplica
+            autoPlayInterval = setInterval(() => {
+                const slidesVisible = window.innerWidth <= 768 ? 1 : 5;
+                const maxSlide = totalSlides - slidesVisible;
+
+                currentSlide = currentSlide < maxSlide ? currentSlide + 1 : 0;
+                updateCarousel();
+            }, 5000); // 5 segundos
+        }
+
+
+        // Atualizar carrossel
+        function updateCarousel() {
+            const slideWidth = window.innerWidth <= 768 ? 100 : 20;
+            const position = currentSlide * slideWidth;
+            track.style.transform = 'translateX(-' + position + '%)';
+
+            // Atualizar o indicador ativo (um por slide!)
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+
+
+        // Parar reprodução automática
+        function stopAutoPlay() {
+            if (autoPlayInterval) {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = null;
+            }
+        }
+
+        // Eventos do modal
+        function bindModalEvents() {
+            // Abrir modal ao clicar no card
+            const blogCards = document.querySelectorAll('.blog-card');
+            for (let i = 0; i < blogCards.length; i++) {
+                blogCards[i].addEventListener('click', function () {
+                    const articleId = this.getAttribute('data-article');
+
+                    // Verifica se a variável articles existe globalmente
+                    if (typeof articles !== 'undefined' && articles[articleId]) {
+                        const article = articles[articleId];
+
+                        modalTitle.textContent = article.title;
+                        modalDate.textContent = '📅 ' + article.date;
+                        modalReadTime.textContent = '⏱️ ' + article.readTime;
+                        modalCategory.textContent = '🏷️ ' + article.category;
+                        modalImage.style.backgroundImage = 'url(\'' + article.image + '\')';
+                        modalText.innerHTML = article.content;
+
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            }
+
+            // Fechar modal
+            if (closeModal) {
+                closeModal.addEventListener('click', function () {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+            }
+
+            // Fechar modal ao clicar fora dele
+            if (modal) {
+                modal.addEventListener('click', function (e) {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+
+            // Fechar modal com tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Inicializar quando DOM carregar
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+        // Fechar modal ao clicar fora
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Filtro por categoria
+        document.querySelectorAll('.category-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Atualiza o botão ativo
+        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const selectedCategory = btn.getAttribute('data-category');
+
+        const allSlides = document.querySelectorAll('.carousel-slide');
+        totalSlides = 0;
+
+        allSlides.forEach(slide => {
+            const card = slide.querySelector('.blog-card');
+            const cardCategory = card.getAttribute('data-category');
+
+            if (selectedCategory === 'all' || selectedCategory === cardCategory) {
+                slide.style.display = '';
+                totalSlides++;
+            } else {
+                slide.style.display = 'none';
+            }
+        });
+
+        currentSlide = 0;
+        updateCarousel();
+    });
+});
+
+
+        // Smooth scrolling para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Efeito de scroll no header
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(67, 97, 238, 0.95), rgba(63, 55, 201, 0.95))';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const subMenus = document.querySelectorAll('.has-submenu');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        subMenus.forEach(item => {
+            item.addEventListener('click', e => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    item.classList.toggle('open');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

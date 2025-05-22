@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POMTO FAQ - Perguntas Frequentes</title>
+    <link rel="icon" href="assets/pomto_icon.png" type="image/png">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary-color: #3f37c9;
+            --accent-color: #6c9bd1;
+            --accent-dark: #5a8bc4;
+            --text-color: #2c3e50;
+            --light-color: #f7f9fc;
+            --dark-color: #1a1d23;
+            --light-gray: #ecf0f3;
+            --card-bg: #ffffff;
+            --soft-blue: #e8f2ff;
+            --muted-text: #6c757d;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-color);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.5rem 1rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .has-submenu {
+            position: relative;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--primary-color);
+            list-style: none;
+            padding: 0.5rem 0;
+            min-width: 150px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+        }
+
+        .submenu li {
+            margin: 0;
+        }
+
+        .submenu a {
+            display: block;
+            padding: 0.5rem 1rem;
+            white-space: nowrap;
+        }
+
+        .has-submenu:hover .submenu {
+            display: block;
+        }
+
+        /* Mobile styles */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            color: white;
+            font-size: 1.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/faq_hero.jpg') center/cover;
+            height: 65vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .page-header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .search-container {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .search-box {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.2rem 3rem 1.2rem 1.5rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 5px 20px rgba(67, 97, 238, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted-text);
+            font-size: 1.2rem;
+        }
+
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .category-tab {
+            padding: 0.8rem 1.5rem;
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .category-tab:hover,
+        .category-tab.active {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .faq-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .faq-question:hover {
+            background-color: var(--soft-blue);
+            color: var(--primary-color);
+        }
+
+        .faq-question.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-toggle.active {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background-color: var(--soft-blue);
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+            padding: 2rem;
+        }
+
+        .faq-answer p {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .faq-answer ul {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        .faq-answer li {
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--success-color), #20c997);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border-left: 4px solid var(--warning-color);
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+
+        .contact-cta {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin-top: 4rem;
+        }
+
+        .contact-cta h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--light-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--muted-text);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                background: var(--primary-color);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                display: none;
+            }
+
+            .nav-links li {
+                margin: 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links li a {
+                padding: 1rem;
+                display: block;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .submenu {
+                position: static;
+                background: var(--secondary-color);
+                box-shadow: none;
+            }
+
+            .has-submenu:hover .submenu {
+                display: none;
+            }
+
+            .has-submenu.open .submenu {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .faq-question {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .faq-answer.active {
+                padding: 1.5rem;
+            }
+
+            .faq-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo-container">
+                <img src="assets/pomto_icon.png" class="logo-image" alt="Logotipo do POMTO">
+                <span class="logo-text">POMTO</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Menu">&#9776;</button>
+            <ul class="nav-links">
+                <li class="has-submenu">
+                    <a href="#">Produto</a>
+                    <ul class="submenu">
+                        <li><a href="#problems">Problemas</a></li>
+                        <li><a href="#features">Como Funciona</a></li>
+                        <li><a href="#demo">Demo</a></li>
+                    </ul>
+                </li>
+                <li><a href="#pricing">Planos</a></li>
+                <li><a href="#empresas">Empresas</a></li>
+                <li><a href="pomto_blog.html">Blog</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>❓ Perguntas Frequentes</h1>
+            <p>Encontre respostas para as dúvidas mais comuns sobre o POMTO</p>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Busque sua dúvida aqui..." id="searchInput">
+                <span class="search-icon">🔍</span>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-item">
+                <div class="stat-number">5+</div>
+                <div class="stat-label">Usuários Ativos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Satisfação</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24h</div>
+                <div class="stat-label">Suporte Médio</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Empresas Parceiras</div>
+            </div>
+        </div>
+
+        <div class="faq-categories">
+            <a href="#geral" class="category-tab active" data-category="geral">📋 Geral</a>
+            <a href="#instalacao" class="category-tab" data-category="instalacao">💻 Instalação</a>
+            <a href="#funcionalidades" class="category-tab" data-category="funcionalidades">⚙️ Funcionalidades</a>
+            <a href="#planos" class="category-tab" data-category="planos">💰 Planos</a>
+            <a href="#empresas" class="category-tab" data-category="empresas">🏢 Empresas</a>
+            <a href="#suporte" class="category-tab" data-category="suporte">🆘 Suporte</a>
+        </div>
+
+        <!-- Seção Geral -->
+        <section class="faq-section" id="geral" data-category="geral">
+            <h2 class="section-title">📋 Perguntas Gerais</h2>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">🤔</span>O que é o POMTO?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>O POMTO (Pombo Remoto) é uma solução completa para trabalho remoto que combina organização de
+                        tarefas, monitoramento ético da produtividade e cuidados com a saúde digital.</p>
+                    <p>Nossa missão é transformar o trabalho remoto em uma experiência mais saudável, produtiva e
+                        respeitosa, tanto para trabalhadores quanto para empresas.</p>
+                    <div class="highlight-box">
+                        <strong>Diferencial:</strong> Focamos em resultados e bem-estar, não em vigilância invasiva.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">🆓</span>O POMTO é realmente gratuito?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Sim! O POMTO oferece uma versão completamente gratuita para uso individual que inclui:</p>
+                    <ul>
+                        <li>Organização pessoal de tarefas</li>
+                        <li>Lembretes de pausas saudáveis</li>
+                        <li>Frases motivacionais</li>
+                        <li>Dashboard básica de produtividade</li>
+                        <li>Participação em múltiplas empresas</li>
+                    </ul>
+                    <p>Também temos planos pagos com funcionalidades avançadas como CV automático e dashboards
+                        empresariais.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">🔒</span>Minha privacidade está protegida?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Absolutamente! A privacidade é um dos nossos pilares fundamentais. O POMTO foi desenvolvido com
+                        base em princípios éticos:</p>
+                    <ul>
+                        <li>Não capturamos telas nem conteúdo pessoal</li>
+                        <li>Não acessamos arquivos privados</li>
+                        <li>Focamos em métricas de produtividade, não vigilância</li>
+                        <li>Você controla quais dados compartilhar</li>
+                        <li>Todos os dados são criptografados</li>
+                    </ul>
+                    <div class="warning-box">
+                        <strong>Importante:</strong> Leia nossa Política de Privacidade para entender completamente como
+                        seus dados são tratados.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Instalação -->
+        <section class="faq-section" id="instalacao" data-category="instalacao" style="display: none;">
+            <h2 class="section-title">💻 Instalação e Configuração</h2>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">📱</span>Em quais dispositivos o POMTO funciona?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Atualmente, o POMTO está disponível para:</p>
+                    <ul>
+                        <li><strong>Windows 10/11:</strong> Versão completa via Microsoft Store</li>
+                        <li><strong>Web:</strong> Dashboard empresarial via navegador</li>
+                    </ul>
+                    <p>Em breve, o POMTO estará disponível para macOS, Linux e dispositivos móveis. Acompanhe nosso blog
+                        e junte-se à comunidade no WhatsApp para atualizações em primeira mão.</p>
+                    <div class="highlight-box">
+                        <strong>Link direto:</strong> <a href="https://apps.microsoft.com/store/detail/9N852P6N7NKM"
+                            style="color: white; text-decoration: underline;">Microsoft Store</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">⚙️</span>Como configurar o POMTO pela primeira vez?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>A configuração inicial é simples e leva apenas alguns minutos:</p>
+                    <ol style="margin-left: 2rem;">
+                        <li>Baixe e instale o POMTO da Microsoft Store</li>
+                        <li>Crie sua conta com email e senha</li>
+                        <li>Configure seus horários de trabalho</li>
+                        <li>Defina suas tarefas</li>
+                        <li>Personalize os lembretes de saúde</li>
+                        <li>Comece a usar!</li>
+                    </ol>
+                    <p>
+                        Ainda não temos um assistente automático de configuração, mas temos vídeos no
+                        <a href="https://youtube.com/playlist?list=PLXSzD6c7R5-jVmPzFOjCq6H0NQqPA9xLf&si=fN4xmhkkZcuZrAdH"
+                            target="_blank" rel="noopener noreferrer">
+                            nosso canal no YouTube
+                        </a>
+                        que mostram passo a passo como preparar o ambiente.
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">🔧</span>Quais são os requisitos do sistema?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p><strong>Requisitos mínimos para Windows:</strong></p>
+                    <ul>
+                        <li>Windows 10 versão 1809 ou superior</li>
+                        <li>2GB de RAM</li>
+                        <li>200MB de espaço em disco</li>
+                        <li>Conexão com internet (opcional, para recursos online)</li>
+                    </ul>
+
+                    <p><strong>Recomendado:</strong></p>
+                    <ul>
+                        <li>Windows 11</li>
+                        <li>4GB de RAM ou mais</li>
+                        <li>Conexão banda larga estável (para melhor experiência)</li>
+                    </ul>
+                    <p>O aplicativo pode funcionar sem internet, mas <strong> alguns recursos </strong> dependem de
+                        conexão para oferecer a
+                        melhor experiência.</p>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Funcionalidades -->
+        <section class="faq-section" id="funcionalidades" data-category="funcionalidades" style="display: none;">
+            <h2 class="section-title">⚙️ Funcionalidades</h2>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">📊</span>Como funcionam os relatórios de produtividade?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Os relatórios do POMTO são gerados com base em métricas éticas de produtividade:</p>
+                    <ul>
+                        <li><strong>Tempo ativo:</strong> Períodos de atividade no computador</li>
+                        <li><strong>Tarefas concluídas:</strong> Objetivos marcados como finalizados</li>
+                        <li><strong>Pausas realizadas:</strong> Cumprimento dos intervalos de saúde (brevemente)</li>
+                        <li><strong>Aplicações utilizadas:</strong> Categorização de ferramentas de trabalho</li>
+                    </ul>
+                    <p>Todos os dados podem ser exportados em PDF, Csv e em Excel.</p>
+                    <div class="highlight-box">
+                        <strong>Importante:</strong> Não monitoramos conteúdo, apenas padrões de atividade.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">🧠</span>Como funcionam os lembretes de saúde?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>O POMTO cuida da sua saúde digital com lembretes inteligentes:</p>
+                    <ul>
+                        <li><strong>Pausas regulares:</strong> Intervalos de 5-10 minutos a cada hora</li>
+                        <li><strong>Exercícios para os olhos:</strong> Dicas para descansar a visão</li>
+                        <li><strong>Alongamentos:</strong> Exercícios simples para o corpo</li>
+                        <li><strong>Hidratação:</strong> Lembretes para beber água</li>
+                        <li><strong>Postura:</strong> Dicas de ergonomia</li>
+                    </ul>
+                    <p>Você pode personalizar a frequência e o tipo de lembretes conforme suas necessidades.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">🎯</span>Como organizar tarefas por objetivos?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>O sistema de organização do POMTO é baseado em objetivos SMART:</p>
+                    <ul>
+                        <li><strong>Específicos:</strong> Defina tarefas claras e detalhadas</li>
+                        <li><strong>Mensuráveis:</strong> Estabeleça critérios de conclusão</li>
+                        <li><strong>Alcançáveis:</strong> Metas realistas para seu contexto</li>
+                        <li><strong>Relevantes:</strong> Alinhadas com seus objetivos profissionais</li>
+                        <li><strong>Temporais:</strong> Com prazos definidos</li>
+                    </ul>
+                    <p>Você pode criar projetos, dividir em subtarefas e acompanhar o progresso em tempo real.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">📱</span>Posso usar o POMTO em múltiplas empresas?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Sim! O POMTO foi desenvolvido pensando em freelancers e profissionais que trabalham para
+                        múltiplas empresas:</p>
+                    <ul>
+                        <li>Perfis separados para cada empresa</li>
+                        <li>Relatórios individualizados</li>
+                        <li>Controle de tempo por projeto</li>
+                        <li>Dashboard unificada para você</li>
+                    </ul>
+                    <div class="highlight-box">
+                        <strong>Vantagem:</strong> Uma única instalação para gerenciar todos os seus trabalhos.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Planos -->
+        <section class="faq-section" id="planos" data-category="planos" style="display: none;">
+            <h2 class="section-title">💰 Planos e Pagamentos</h2>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">💳</span>Quais são os planos disponíveis?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Oferecemos três planos principais:</p>
+                    <ul>
+                        <li><strong>Gratuito:</strong> Para uso individual com funcionalidades básicas.</li>
+                        <li><strong>CV Pro (Kz 3.700/mês):</strong> Inclui CV automático e análise de competências.
+                            <em>(Lançamento em breve)</em></li>
+                        <li><strong>Empresarial (Kz 24.500/funcionário/mês):</strong> Dashboard completa para gestão de
+                            equipes.</li>
+                    </ul>
+
+                    <p>Todos os planos incluem suporte técnico e atualizações regulares.</p>
+
+                    <div class="warning-box">
+                        <strong>Nota:</strong> O plano <strong>CV Pro</strong> e a versão <strong>Empresarial</strong>
+                        ainda estão em fase final de desenvolvimento.
+                        Empresas interessadas podem solicitar <strong>acesso antecipado</strong> com benefícios
+                        exclusivos, como <strong>8% de desconto por funcionário no primeiro ano</strong>.
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">🔄</span>Posso cancelar minha assinatura a qualquer momento?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Sim, você pode cancelar sua assinatura a qualquer momento:</p>
+                    <ul>
+                        <li>Sem multas ou taxas de cancelamento</li>
+                        <li>Acesso mantido até o final do período pago</li>
+                        <li>Dados preservados por 90 dias após cancelamento</li>
+                        <li>Reativação simples se mudar de ideia</li>
+                    </ul>
+                    <p>Para cancelar, acesse as configurações da sua conta ou entre em contato com nosso suporte.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">🏦</span>Quais formas de pagamento são aceitas?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Aceitamos diversas formas de pagamento para sua conveniência:</p>
+                    <ul>
+                        <li>Transferência bancária (Angola)</li>
+                        <li>Cartão de crédito/débito (Visa, Mastercard)</li>
+                        <li>PayPal (internacional)</li>
+                        <li>PIX (para clientes brasileiros)</li>
+                        <li>Pagamento empresarial por fatura</li>
+                    </ul>
+                    <p>Todos os pagamentos são processados com segurança através de gateways certificados.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Empresas -->
+        <section class="faq-section" id="empresas" data-category="empresas" style="display: none;">
+            <h2 class="section-title">🏢 Soluções Empresariais</h2>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">📈</span>Como funciona o plano empresarial?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>O plano empresarial oferece controle completo sobre sua equipe remota:</p>
+                    <ul>
+                        <li><strong>Dashboard executiva:</strong> Visão geral da produtividade da equipe</li>
+                        <li><strong>Relatórios detalhados:</strong> Métricas individuais e coletivas</li>
+                        <li><strong>Gestão de projetos:</strong> Acompanhamento de objetivos e prazos</li>
+                        <li><strong>Integrações:</strong> API e webhooks para seus sistemas</li>
+                        <li><strong>Suporte dedicado:</strong> Atendimento prioritário 24/7</li>
+                    </ul>
+                    <div class="highlight-box">
+                        <strong>Diferencial:</strong> Transparência total sem invadir a privacidade dos funcionários.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">🔗</span>É possível integrar com nossos sistemas internos?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Sim! Oferecemos várias opções de integração:</p>
+                    <ul>
+                        <li><strong>API REST:</strong> Para integração com ERPs e sistemas de RH</li>
+                        <li><strong>Webhooks:</strong> Notificações automáticas para seus sistemas</li>
+                        <li><strong>Exportação de dados:</strong> Relatórios em Excel, PDF e CSV</li>
+                        <li><strong>SSO:</strong> Login único com Active Directory</li>
+                    </ul>
+                    <p>Nossa equipe técnica pode ajudar na configuração e implementação.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">🎯</span>Como o POMTO ajuda a reduzir o turnover?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>O POMTO contribui para a retenção de talentos através de:</p>
+                    <ul>
+                        <li><strong>Confiança mútua:</strong> Monitoramento ético cria ambiente de respeito</li>
+                        <li><strong>Bem-estar:</strong> Cuidados com saúde digital reduzem burnout</li>
+                        <li><strong>Reconhecimento:</strong> Relatórios mostram contribuições reais</li>
+                        <li><strong>Flexibilidade:</strong> Trabalho baseado em resultados, não horas</li>
+                        <li><strong>Desenvolvimento:</strong> Insights para crescimento profissional</li>
+                    </ul>
+                    <div class="highlight-box">
+                        Faça parte do nosso grupo inicial de empresas e tenha acesso antecipado a <strong> funcionalidades exclusivas </strong>, com <strong> desconto e suporte prioritário.</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Suporte -->
+        <section class="faq-section" id="suporte" data-category="suporte" style="display: none;">
+            <h2 class="section-title">🆘 Suporte e Ajuda</h2>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">📞</span>Como entrar em contato com o suporte?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Oferecemos várias formas de suporte:</p>
+                    <ul>
+                        <li><strong>Email:</strong> eliezerafonso51@gmail.com</li>
+                        <li><strong>WhatsApp:</strong> +244 944-610-560</li>
+                        <li><strong>Chat no app:</strong> Disponível durante horário comercial</li>
+                        <li><strong>Central de Ajuda:</strong> Artigos e tutoriais online</li>
+                    </ul>
+                    <p><strong>Horários de atendimento:</strong></p>
+                    <ul>
+                        <li>Segunda a Sexta: 8h às 18h (GMT+1)</li>
+                        <li>Sábado: 9h às 13h (GMT+1)</li>
+                        <li>Urgências empresariais: 24/7</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">⏱️</span>Qual o tempo de resposta do suporte?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Nossos tempos de resposta por tipo de usuário:</p>
+                    <ul>
+                        <li><strong>Usuários gratuitos:</strong> Até 48 horas por email</li>
+                        <li><strong>CV Pro:</strong> Até 24 horas com suporte prioritário</li>
+                        <li><strong>Empresarial:</strong> Até 4 horas com suporte dedicado</li>
+                        <li><strong>Urgências críticas:</strong> Até 2 horas para clientes empresariais</li>
+                    </ul>
+                    <p>Estamos trabalhando para reduzir ainda mais esses tempos conforme crescemos.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">🐛</span>Como reportar um bug ou problema?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Para reportar problemas, siga estes passos:</p>
+                    <ol style="margin-left: 2rem;">
+                        <li>Descreva o problema detalhadamente</li>
+                        <li>Inclua passos para reproduzir o erro</li>
+                        <li>Anexe screenshots se possível</li>
+                        <li>Informe sua versão do Windows e do POMTO</li>
+                        <li>Envie para <strong> solthystartup@gmail.com </strong></li>
+                    </ol>
+                    <p>Bugs críticos têm prioridade máxima e são corrigidos em até 24 horas.</p>
+                    <div class="highlight-box">
+                        <strong>Recompensa:</strong> Bugs relevantes podem render créditos ou extensão gratuita do
+                        plano!
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span><span class="faq-icon">📚</span>Onde encontrar tutoriais e documentação?</span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Disponibilizamos vários recursos de aprendizado:</p>
+                    <ul>
+                        <li><strong>Central de Ajuda:</strong> Artigos organizados por categoria</li>
+                        <li><strong>Canal no YouTube:</strong> Vídeo-tutoriais passo a passo</li>
+                        <li><strong>Blog POMTO:</strong> Dicas e melhores práticas</li>
+                        <li><strong>Webinars:</strong> Sessões ao vivo mensais</li>
+                        <li><strong>Documentação da API:</strong> Para desenvolvedores</li>
+                    </ul>
+                    <p>Todo conteúdo está disponível em português e é atualizado regularmente.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="contact-cta">
+            <h3>Não encontrou sua resposta?</h3>
+            <p>Nossa equipe está sempre pronta para ajudar você a ter a melhor experiência com o POMTO</p>
+            <a href="mailto:eliezerafonso51@gmail.com" class="btn btn-primary">Falar com Suporte</a>
+        </div>
+    </main>
+
+    <script>
+        // Toggle FAQ items
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const answer = question.nextElementSibling;
+                const toggle = question.querySelector('.faq-toggle');
+                const isActive = answer.classList.contains('active');
+
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-answer.active').forEach(activeAnswer => {
+                    if (activeAnswer !== answer) {
+                        activeAnswer.classList.remove('active');
+                        activeAnswer.previousElementSibling.classList.remove('active');
+                        activeAnswer.previousElementSibling.querySelector('.faq-toggle').classList.remove('active');
+                        activeAnswer.previousElementSibling.querySelector('.faq-toggle').textContent = '+';
+                    }
+                });
+
+                // Toggle current item
+                if (!isActive) {
+                    answer.classList.add('active');
+                    question.classList.add('active');
+                    toggle.classList.add('active');
+                    toggle.textContent = '×';
+                } else {
+                    answer.classList.remove('active');
+                    question.classList.remove('active');
+                    toggle.classList.remove('active');
+                    toggle.textContent = '+';
+                }
+            });
+        });
+
+        // Category navigation
+        document.querySelectorAll('.category-tab').forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const category = tab.getAttribute('data-category');
+
+                // Update active tab
+                document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Show/hide sections
+                document.querySelectorAll('.faq-section').forEach(section => {
+                    if (section.getAttribute('data-category') === category) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+
+                // Close all open FAQ items
+                document.querySelectorAll('.faq-answer.active').forEach(answer => {
+                    answer.classList.remove('active');
+                    answer.previousElementSibling.classList.remove('active');
+                    answer.previousElementSibling.querySelector('.faq-toggle').classList.remove('active');
+                    answer.previousElementSibling.querySelector('.faq-toggle').textContent = '+';
+                });
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            const sections = document.querySelectorAll('.faq-section');
+
+            if (searchTerm === '') {
+                // Show current category
+                const activeCategory = document.querySelector('.category-tab.active').getAttribute('data-category');
+                sections.forEach(section => {
+                    section.style.display = section.getAttribute('data-category') === activeCategory ? 'block' : 'none';
+                });
+                faqItems.forEach(item => item.style.display = 'block');
+            } else {
+                // Show all sections and filter items
+                sections.forEach(section => section.style.display = 'block');
+
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                    const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        // Highlight search term (basic implementation)
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(67, 97, 238, 0.95), rgba(63, 55, 201, 0.95))';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const subMenus = document.querySelectorAll('.has-submenu');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        subMenus.forEach(item => {
+            item.addEventListener('click', e => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    item.classList.toggle('open');
+                }
+            });
+        });
+
+        // Auto-expand FAQ item from URL hash
+        window.addEventListener('load', () => {
+            const hash = window.location.hash;
+            if (hash) {
+                const targetSection = document.querySelector(hash);
+                if (targetSection) {
+                    // Switch to appropriate category
+                    const categoryTab = document.querySelector(`[data-category="${targetSection.getAttribute('data-category')}"]`);
+                    if (categoryTab) {
+                        categoryTab.click();
+                    }
+
+                    // Scroll to section
+                    setTimeout(() => {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }, 300);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
