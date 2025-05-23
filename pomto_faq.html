@@ -171,7 +171,7 @@
         }
 
         .page-header-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 2rem;
         }
@@ -514,30 +514,95 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
+        /* Telas muito pequenas (smartphones antigos ou em modo retrato) */
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .search-input {
+                padding: 1rem 2.5rem 1rem 1rem;
+                font-size: 1rem;
+            }
+
+            .faq-question {
+                font-size: 0.95rem;
+                padding: 0.8rem 1rem;
+            }
+
+            .faq-answer.active {
+                padding: 1rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .stats-section {
+                grid-template-columns: 1fr;
+            }
+
+            .category-tab {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Telas muito grandes (monitores ultra-wide ou 4K) */
+        @media (min-width: 1440px) {
+            .main-content {
+                max-width: 1400px;
+            }
+
+            .nav-links li {
+                margin-left: 3rem;
+            }
+
+            .page-header h1 {
+                font-size: 4rem;
+            }
+
+            .faq-question {
+                font-size: 1.3rem;
+            }
+
+            .faq-answer.active {
+                font-size: 1.1rem;
+            }
+        }
     </style>
 </head>
 
 <body>
     <header>
         <nav>
-            <a href="#" class="logo-container">
+            <a href="index.html" class="logo-container">
                 <img src="assets/pomto_icon.png" class="logo-image" alt="Logotipo do POMTO">
                 <span class="logo-text">POMTO</span>
             </a>
             <button class="mobile-menu-toggle" aria-label="Menu">&#9776;</button>
             <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
                 <li class="has-submenu">
                     <a href="#">Produto</a>
                     <ul class="submenu">
-                        <li><a href="#problems">Problemas</a></li>
-                        <li><a href="#features">Como Funciona</a></li>
-                        <li><a href="#demo">Demo</a></li>
+                        <li><a href="index.html#problems">Problemas</a></li>
+                        <li><a href="index.html#features">Como Funciona</a></li>
+                        <li><a href="index.html#demo">Demo</a></li>
                     </ul>
                 </li>
-                <li><a href="#pricing">Planos</a></li>
-                <li><a href="#empresas">Empresas</a></li>
+                <li><a href="index.html#pricing">Planos</a></li>
+                <li><a href="index.html#empresas">Empresas</a></li>
                 <li><a href="pomto_blog.html">Blog</a></li>
-                <li><a href="#contact">Contato</a></li>
+                <li class="has-submenu">
+                    <a href="#">Suporte</a>
+                    <ul class="submenu">
+                        <li><a href="pomto_contact.html">Contato</a></li>
+                        <li><a href="pomto-privacy.html">Políticas de Privacidade</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </header>
@@ -821,7 +886,8 @@
                     <ul>
                         <li><strong>Gratuito:</strong> Para uso individual com funcionalidades básicas.</li>
                         <li><strong>CV Pro (Kz 3.700/mês):</strong> Inclui CV automático e análise de competências.
-                            <em>(Lançamento em breve)</em></li>
+                            <em>(Lançamento em breve)</em>
+                        </li>
                         <li><strong>Empresarial (Kz 24.500/funcionário/mês):</strong> Dashboard completa para gestão de
                             equipes.</li>
                     </ul>
@@ -930,7 +996,8 @@
                         <li><strong>Desenvolvimento:</strong> Insights para crescimento profissional</li>
                     </ul>
                     <div class="highlight-box">
-                        Faça parte do nosso grupo inicial de empresas e tenha acesso antecipado a <strong> funcionalidades exclusivas </strong>, com <strong> desconto e suporte prioritário.</strong>
+                        Faça parte do nosso grupo inicial de empresas e tenha acesso antecipado a <strong>
+                            funcionalidades exclusivas </strong>, com <strong> desconto e suporte prioritário.</strong>
                     </div>
                 </div>
             </div>
@@ -1023,7 +1090,7 @@
         <div class="contact-cta">
             <h3>Não encontrou sua resposta?</h3>
             <p>Nossa equipe está sempre pronta para ajudar você a ter a melhor experiência com o POMTO</p>
-            <a href="mailto:eliezerafonso51@gmail.com" class="btn btn-primary">Falar com Suporte</a>
+            <a href="pomto_contact.html" class="btn btn-primary">Falar com Suporte</a>
         </div>
     </main>
 
@@ -1124,20 +1191,25 @@
         });
 
         // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                const href = this.getAttribute('href');
+
+                if (href.length > 1) {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 }
             });
         });
 
-        // Header scroll effect
+        // Add scroll effect to header
         window.addEventListener('scroll', function () {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
@@ -1158,7 +1230,8 @@
         });
 
         subMenus.forEach(item => {
-            item.addEventListener('click', e => {
+            const link = item.querySelector('a');
+            link.addEventListener('click', e => {
                 if (window.innerWidth <= 768) {
                     e.preventDefault();
                     item.classList.toggle('open');

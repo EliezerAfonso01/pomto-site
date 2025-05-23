@@ -38,7 +38,7 @@
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 1rem;
+            padding: 0.8rem 1rem;
             position: fixed;
             width: 100%;
             top: 0;
@@ -62,19 +62,19 @@
         }
 
         .logo-image {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
+            width: 35px;
+            height: 35px;
+            margin-right: 8px;
             background-color: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         .logo-text {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: white;
             letter-spacing: 1px;
@@ -83,6 +83,7 @@
         .nav-links {
             display: flex;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links li {
@@ -148,7 +149,6 @@
             display: block;
         }
 
-        /* Mobile styles */
         .mobile-menu-toggle {
             display: none;
             background: none;
@@ -156,11 +156,12 @@
             font-size: 1.5rem;
             border: none;
             cursor: pointer;
+            padding: 0.5rem;
         }
 
         .page-header {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/blog_hero.jpg') center/cover;
-            height: 60vh;
+            height: 65vh;
             display: flex;
             align-items: center;
             text-align: center;
@@ -169,26 +170,53 @@
         }
 
         .page-header-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 2rem;
         }
 
         .page-header h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .page-header p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             opacity: 0.9;
         }
 
         .main-content {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 3rem 1.5rem;
+        }
+
+        .categories-filter {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            padding: 0 1rem;
+        }
+
+        .category-btn {
+            padding: 0.7rem 1.2rem;
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--primary-color);
+            color: white;
         }
 
         .blog-carousel {
@@ -197,31 +225,34 @@
 
         .carousel-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         .carousel-header h2 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .carousel-header p {
+            font-size: 1rem;
+            color: var(--muted-text);
         }
 
         .carousel-container {
             position: relative;
             overflow: hidden;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .carousel-track {
             display: flex;
             transition: transform 0.5s ease;
-            width: 500%;
         }
 
         .carousel-slide {
-            flex: 0 0 20%;
-            box-sizing: border-box;
+            flex: 0 0 25%;
+            padding: 0 0.5rem;
         }
 
         .blog-card {
@@ -231,7 +262,7 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
             cursor: pointer;
-            margin: 0 10px;
+            height: 100%;
         }
 
         .blog-card:hover {
@@ -239,38 +270,40 @@
         }
 
         .blog-card-image {
-            height: 250px;
+            height: 200px;
             background-size: cover;
             background-position: center;
             position: relative;
+            background-image: url('/api/placeholder/400/200');
         }
 
         .blog-card-category {
             position: absolute;
-            top: 15px;
-            left: 15px;
+            top: 12px;
+            left: 12px;
             background: var(--primary-color);
             color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
             font-weight: bold;
         }
 
         .blog-card-content {
-            padding: 1.5rem;
+            padding: 1.2rem;
         }
 
         .blog-card-title {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: var(--primary-color);
             margin-bottom: 0.5rem;
             font-weight: 600;
+            line-height: 1.4;
         }
 
         .blog-card-excerpt {
             color: var(--muted-text);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             line-height: 1.5;
             margin-bottom: 1rem;
         }
@@ -279,7 +312,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--muted-text);
         }
 
@@ -289,14 +322,14 @@
             transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.9);
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--primary-color);
             transition: all 0.3s ease;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -308,23 +341,23 @@
         }
 
         .carousel-prev {
-            left: 15px;
+            left: 10px;
         }
 
         .carousel-next {
-            right: 15px;
+            right: 10px;
         }
 
         .carousel-indicators {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-top: 2rem;
+            gap: 8px;
+            margin-top: 1.5rem;
         }
 
         .indicator {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: var(--light-gray);
             cursor: pointer;
@@ -362,18 +395,18 @@
         }
 
         .modal-header {
-            padding: 2rem;
+            padding: 1.5rem;
             border-bottom: 1px solid var(--light-gray);
             position: relative;
         }
 
         .modal-close {
             position: absolute;
-            top: 15px;
-            right: 20px;
+            top: 10px;
+            right: 15px;
             background: none;
             border: none;
-            font-size: 2rem;
+            font-size: 1.8rem;
             cursor: pointer;
             color: var(--muted-text);
             transition: color 0.3s ease;
@@ -384,83 +417,229 @@
         }
 
         .modal-title {
-            font-size: 2rem;
+            font-size: 1.6rem;
             color: var(--primary-color);
             margin-bottom: 1rem;
+            padding-right: 2rem;
         }
 
         .modal-meta {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             color: var(--muted-text);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
         }
 
         .modal-body {
-            padding: 2rem;
+            padding: 1.5rem;
             max-height: 60vh;
             overflow-y: auto;
         }
 
+        .modal-body h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .modal-body h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #34495e;
+            margin: 2rem 0 1rem 0;
+            position: relative;
+        }
+
+        .modal-body h4::before {
+            content: '';
+            position: absolute;
+            left: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .modal-body h5 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #4a5568;
+            margin: 1.5rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-body h5::before {
+            content: '▶';
+            color: #667eea;
+            font-size: 0.8rem;
+        }
+
+        .modal-body h6 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #5a6c7d;
+            margin: 1rem 0 0.5rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        .modal-body p {
+            margin-bottom: 1.5rem;
+            color: #4a5568;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .modal-body ul {
+            margin: 1rem 0 1.5rem 0;
+            padding-left: 0;
+        }
+
+        .modal-body li {
+            list-style: none;
+            margin-bottom: 0.8rem;
+            padding-left: 2rem;
+            position: relative;
+            color: #4a5568;
+            font-size: 1.05rem;
+        }
+
+        .modal-body li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #10b981;
+            font-weight: bold;
+            background: #f0f9ff;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            border: 2px solid #10b981;
+        }
+
+        .modal-body li strong {
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .modal-body blockquote {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-left: 5px solid #667eea;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #2d3748;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-body blockquote::before {
+            content: '"';
+            font-size: 4rem;
+            color: #667eea;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            opacity: 0.3;
+            font-family: serif;
+        }
+
+        /* Special list styles for negative items */
+        .modal-body li:has-text("❌"),
+        .modal-body li:has-text("✅") {
+            padding-left: 2.5rem;
+        }
+
+        .modal-body li:has-text("❌")::before {
+            content: '❌';
+            background: none;
+            border: none;
+            color: #ef4444;
+        }
+
+        .modal-body li:has-text("✅")::before {
+            content: '✅';
+            background: none;
+            border: none;
+        }
+
         .modal-image {
             width: 100%;
-            height: 300px;
+            height: 250px;
             background-size: cover;
             background-position: center;
             border-radius: 10px;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            background-image: url('/api/placeholder/800/250');
         }
 
         .modal-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1rem;
+            line-height: 1.7;
             color: var(--text-color);
         }
 
         .modal-text h3 {
             color: var(--primary-color);
-            margin: 2rem 0 1rem;
-            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.2rem;
         }
 
         .modal-text p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .modal-text ul {
-            margin: 1rem 0 1.5rem 2rem;
+            margin: 1rem 0 1.2rem 1.5rem;
         }
 
         .modal-text li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
-        .categories-filter {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
+        /* Tablet responsiveness */
+        @media (max-width: 1024px) {
+            .carousel-slide {
+                flex: 0 0 50%;
+            }
+
+            .main-content {
+                padding: 2.5rem 1rem;
+            }
         }
 
-        .category-btn {
-            padding: 0.8rem 1.5rem;
-            background: white;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .category-btn:hover,
-        .category-btn.active {
-            background: var(--primary-color);
-            color: white;
-        }
-
+        /* Mobile responsiveness */
         @media (max-width: 768px) {
+            header {
+                padding: 0.5rem 1rem;
+            }
+
+            .logo-image {
+                width: 30px;
+                height: 30px;
+                margin-right: 6px;
+            }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
             .nav-links {
                 flex-direction: column;
                 background: var(--primary-color);
@@ -469,6 +648,7 @@
                 left: 0;
                 width: 100%;
                 display: none;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             }
 
             .nav-links li {
@@ -503,33 +683,242 @@
                 display: block;
             }
 
+            .page-header {
+                height: 40vh;
+                padding-top: 60px;
+            }
+
             .page-header h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            .page-header-content {
+                padding: 1rem;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .carousel-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .categories-filter {
+                gap: 0.5rem;
+                margin-bottom: 2rem;
+                padding: 0;
+            }
+
+            .category-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .carousel-slide {
+                flex: 0 0 100%;
+                padding: 0;
             }
 
             .carousel-nav {
                 display: none;
             }
 
-            .carousel-slide {
-                flex: 0 0 100%;
+            .blog-card {
+                margin: 0 0.5rem;
+            }
+
+            .blog-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                border-radius: 16px;
+            }
+
+            .blog-card:hover::before {
+                opacity: 1;
+            }
+
+            .blog-card-image {
+                height: 180px;
+            }
+
+            .blog-card-content {
+                padding: 1rem;
+            }
+
+            .blog-card-title {
+                font-size: 1rem;
+            }
+
+            .blog-card-excerpt {
+                font-size: 0.8rem;
             }
 
             .modal-content {
                 width: 95%;
                 max-height: 95vh;
+                margin: 1rem;
+                animation: modalSlideIn 0.3s ease-out;
+            }
+
+            @keyframes modalSlideIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-50px) scale(0.95);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
             }
 
             .modal-header {
-                padding: 1.5rem;
+                padding: 1rem;
             }
 
             .modal-body {
-                padding: 1.5rem;
+                padding: 1rem;
+                max-height: 70vh;
             }
 
             .modal-title {
+                font-size: 1.3rem;
+                padding-right: 1.5rem;
+            }
+
+            .modal-meta {
+                gap: 1rem;
+                font-size: 0.8rem;
+            }
+
+            .modal-image {
+                height: 200px;
+                margin-bottom: 1rem;
+            }
+
+            .modal-text {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            .modal-text h3 {
+                font-size: 1.1rem;
+                margin: 1.2rem 0 0.8rem;
+            }
+
+            .modal-text p {
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .page-header {
+                height: 35vh;
+            }
+
+            .page-header h1 {
+                font-size: 1.6rem;
+            }
+
+            .page-header p {
+                font-size: 0.9rem;
+            }
+
+            .carousel-header h2 {
                 font-size: 1.5rem;
+            }
+
+            .carousel-header p {
+                font-size: 0.9rem;
+            }
+
+            .categories-filter {
+                gap: 0.3rem;
+            }
+
+            .category-btn {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.75rem;
+            }
+
+            .blog-card {
+                margin: 0 0.2rem;
+            }
+
+            .blog-card-image {
+                height: 150px;
+            }
+
+            .blog-card-content {
+                padding: 0.8rem;
+            }
+
+            .blog-card-title {
+                font-size: 0.9rem;
+                line-height: 1.3;
+            }
+
+            .blog-card-excerpt {
+                font-size: 0.75rem;
+            }
+
+            .blog-card-meta {
+                font-size: 0.7rem;
+            }
+
+            .modal-content {
+                width: 98%;
+                max-height: 98vh;
+                margin: 0.5rem;
+            }
+
+            .modal-header {
+                padding: 0.8rem;
+            }
+
+            .modal-body {
+                padding: 0.8rem;
+            }
+
+            .modal-title {
+                font-size: 1.1rem;
+            }
+
+            .modal-close {
+                font-size: 1.5rem;
+                top: 8px;
+                right: 12px;
+            }
+
+            .modal-image {
+                height: 150px;
+            }
+
+            .modal-text {
+                font-size: 0.9rem;
+            }
+
+            .carousel-indicators {
+                gap: 6px;
+                margin-top: 1rem;
+            }
+
+            .indicator {
+                width: 8px;
+                height: 8px;
             }
         }
     </style>
@@ -538,24 +927,31 @@
 <body>
     <header>
         <nav>
-            <a href="#" class="logo-container">
+            <a href="index.html" class="logo-container">
                 <img src="assets/pomto_icon.png" class="logo-image" alt="Logotipo do POMTO">
                 <span class="logo-text">POMTO</span>
             </a>
             <button class="mobile-menu-toggle" aria-label="Menu">&#9776;</button>
             <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
                 <li class="has-submenu">
                     <a href="#">Produto</a>
                     <ul class="submenu">
-                        <li><a href="#problems">Problemas</a></li>
-                        <li><a href="#features">Como Funciona</a></li>
-                        <li><a href="#demo">Demo</a></li>
+                        <li><a href="index.html#problems">Problemas</a></li>
+                        <li><a href="index.html#features">Como Funciona</a></li>
+                        <li><a href="index.html#demo">Demo</a></li>
                     </ul>
                 </li>
-                <li><a href="#pricing">Planos</a></li>
-                <li><a href="#empresas">Empresas</a></li>
+                <li><a href="index.html#pricing">Planos</a></li>
+                <li><a href="index.html#empresas">Empresas</a></li>
                 <li><a href="pomto_faq.html">FAQ</a></li>
-                <li><a href="#contact">Contato</a></li>
+                <li class="has-submenu">
+                    <a href="#">Suporte</a>
+                    <ul class="submenu">
+                        <li><a href="pomto_contact.html">Contato</a></li>
+                        <li><a href="pomto-privacy.html">Políticas de Privacidade</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </header>
@@ -586,7 +982,7 @@
                 <div class="carousel-track" id="carouselTrack">
                     <div class="carousel-slide">
                         <div class="blog-card" data-article="1" data-category="saude">
-                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                            <div class="blog-card-image" style="background-image: url('assets/burnout.jpg')">
                                 <span class="blog-card-category">Saúde Digital</span>
                             </div>
                             <div class="blog-card-content">
@@ -604,7 +1000,7 @@
 
                     <div class="carousel-slide">
                         <div class="blog-card" data-article="2" data-category="produtividade">
-                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                            <div class="blog-card-image" style="background-image: url('assets/valor.jpg')">
                                 <span class="blog-card-category">Produtividade Ética</span>
                             </div>
                             <div class="blog-card-content">
@@ -622,7 +1018,7 @@
 
                     <div class="carousel-slide">
                         <div class="blog-card" data-article="3" data-category="tecnologia">
-                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                            <div class="blog-card-image" style="background-image: url('assets/CvCreatorPro.jpg')">
                                 <span class="blog-card-category">Carreira & Inovação</span>
                             </div>
                             <div class="blog-card-content">
@@ -640,7 +1036,7 @@
 
                     <div class="carousel-slide">
                         <div class="blog-card" data-article="4" data-category="tecnologia">
-                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                            <div class="blog-card-image" style="background-image: url('assets/unificada.jpg')">
                                 <span class="blog-card-category">Tecnologia</span>
                             </div>
                             <div class="blog-card-content">
@@ -658,7 +1054,7 @@
 
                     <div class="carousel-slide">
                         <div class="blog-card" data-article="5" data-category="produtividade">
-                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                            <div class="blog-card-image" style="background-image: url('assets/preguica.png')">
                                 <span class="blog-card-category">Produtividade Pessoal</span>
                             </div>
                             <div class="blog-card-content">
@@ -676,7 +1072,7 @@
 
                     <div class="carousel-slide">
                         <div class="blog-card" data-article="6" data-category="saude">
-                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                            <div class="blog-card-image" style="background-image: url('assets/coruja.jpg')">
                                 <span class="blog-card-category">Saúde e Foco</span>
                             </div>
                             <div class="blog-card-content">
@@ -693,7 +1089,7 @@
 
                     <div class="carousel-slide">
                         <div class="blog-card" data-article="7" data-category="trabalho-remoto">
-                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                            <div class="blog-card-image" style="background-image: url('assets/vigiado.jpg')">
                                 <span class="blog-card-category">Ética Digital</span>
                             </div>
                             <div class="blog-card-content">
@@ -711,7 +1107,7 @@
 
                     <div class="carousel-slide">
                         <div class="blog-card" data-article="8" data-category="trabalho-remoto">
-                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                            <div class="blog-card-image" style="background-image: url('assets/estatistica_trabalho_remoto.jpg')">
                                 <span class="blog-card-category">Trabalho Remoto</span>
                             </div>
                             <div class="blog-card-content">
@@ -728,7 +1124,7 @@
 
                     <div class="carousel-slide">
                         <div class="blog-card" data-article="9" data-category="trabalho-remoto">
-                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                            <div class="blog-card-image" style="background-image: url('assets/sobre_profissional.jpg')">
                                 <span class="blog-card-category">Análise de Dados</span>
                             </div>
                             <div class="blog-card-content">
@@ -745,7 +1141,7 @@
 
                     <div class="carousel-slide">
                         <div class="blog-card" data-article="10">
-                            <div class="blog-card-image" style="background-image: url('/api/placeholder/400/250')">
+                            <div class="blog-card-image" style="background-image: url('assets/problemas.jpg')">
                                 <span class="blog-card-category">Vida Real</span>
                             </div>
                             <div class="blog-card-content">
@@ -813,7 +1209,7 @@
                 date: "20 Mai 2025",
                 readTime: "4 min",
                 category: "Saúde Digital",
-                image: "/api/placeholder/800/400",
+                image: "assets/burnout.jpg",
                 content: `
       <h3>Estás esgotado?</h3>
       <p>O trabalho remoto pode parecer mais leve, mas facilmente leva à exaustão se não forem estabelecidos limites. A linha entre vida pessoal e profissional torna-se cada vez mais ténue quando o escritório é em casa. Aqui estão 5 sinais de alerta para evitares o burnout:</p>
@@ -840,7 +1236,7 @@
                 date: "18 Mai 2025",
                 readTime: "5 min",
                 category: "Produtividade Ética",
-                image: "/api/placeholder/800/400",
+                image: "assets/valor.jpg",
                 content: `
       <h3>Mostra o que realmente fazes</h3>
       <p>Um dos maiores desafios do trabalho remoto é demonstrar o valor do teu trabalho quando não és fisicamente visível. Muitos gestores ainda associam presença física com produtividade, criando uma necessidade de "prova" constante do teu empenho.</p>
@@ -874,7 +1270,7 @@
                 date: "17 Mai 2025",
                 readTime: "4 min",
                 category: "Carreira & Inovação",
-                image: "/api/placeholder/800/400",
+                image: "assets/CvCreatorPro.jpg",
                 content: `
       <h3>O teu trabalho agora fala por ti</h3>
       <p>Imagina apresentar um CV que não só lista as tuas competências, mas prova-as com dados reais. O CV tradicional está morto - chegou a era dos CVs baseados em evidências.</p>
@@ -908,7 +1304,7 @@
                 date: "16 Mai 2025",
                 readTime: "5 min",
                 category: "Tecnologia",
-                image: "/api/placeholder/800/400",
+                image: "assets/unificada.jpg",
                 content: `
       <h3>Menos janelas, mais foco</h3>
       <p>Quantas aplicações tens abertas neste momento? Slack, Trello, Notion, Gmail, calendário, editor de código... A fragmentação digital é um dos maiores inimigos da produtividade moderna.</p>
@@ -956,7 +1352,7 @@
                 date: "14 Mai 2025",
                 readTime: "4 min",
                 category: "Produtividade Pessoal",
-                image: "/api/placeholder/800/400",
+                image: "assets/preguica.png",
                 content: `
       <h3>Organiza-te como um profissional</h3>
       <p>Quantas vezes já perdeste tempo a criar a mesma estrutura de pastas? A copiar ficheiros base? A renomear dezenas de ficheiros manualmente? O LazyCopy elimina essas tarefas repetitivas da tua vida.</p>
@@ -1015,7 +1411,7 @@
                 date: "13 Mai 2025",
                 readTime: "4 min",
                 category: "Saúde e Foco",
-                image: "/api/placeholder/800/400",
+                image: "assets/coruja.jpg",
                 content: `
       <h3>O teu companheiro de jornada</h3>
       <p>Trabalhar remotamente pode ser libertador, mas também perigoso para a tua saúde. Sem colegas para te lembrarem de fazer uma pausa, sem uma cantina para te forçar a parar para almoçar, é fácil negligenciar o básico.</p>
@@ -1078,7 +1474,7 @@
                 date: "11 Mai 2025",
                 readTime: "5 min",
                 category: "Ética Digital",
-                image: "/api/placeholder/800/400",
+                image: "assets/vigiado.jpg",
                 content: `
       <h3>Privacidade é respeito</h3>
       <p>A linha entre monitorização produtiva e vigilância invasiva tornou-se perigosamente ténue. Muitas empresas implementam ferramentas que transformam funcionários em suspeitos, criando ambientes de trabalho tóxicos disfarçados de "otimização de performance".</p>
@@ -1152,7 +1548,7 @@
                 date: "09 Mai 2025",
                 readTime: "6 min",
                 category: "Trabalho Remoto",
-                image: "/api/placeholder/800/400",
+                image: "assets/estatistica_trabalho_remoto.jpg",
                 content: `
       <h3>Um futuro digital</h3>
       <p>África está no epicentro de uma revolução digital silenciosa. Com uma população jovem, crescente penetração da internet e uma fome empresarial impressionante, o continente posiciona-se para ser o próximo hub global de talento remoto. Mas será oportunidade ou armadilha?</p>
@@ -1267,7 +1663,7 @@
                 date: "08 Mai 2025",
                 readTime: "3 min",
                 category: "Análise de Dados",
-                image: "/api/placeholder/800/400",
+                image: "assets/sobre_profissional.jpg",
                 content: `
       <h3>Transforma o teu esforço em números</h3>
       <p>Números não mentem. Enquanto as palavras podem ser interpretadas, manipuladas ou esquecidas, os dados contam a história real do teu trabalho. O POMTO transforma a tua jornada profissional numa narrativa visual poderosa.</p>
@@ -1369,7 +1765,7 @@
                 date: "06 Mai 2025",
                 readTime: "4 min",
                 category: "Vida Real",
-                image: "/api/placeholder/800/400",
+                image: "assets/problemas.jpg",
                 content: `
       <h3>Quando o ambiente não ajuda</h3>
       <p>A realidade do trabalho remoto não é sempre um escritório Pinterest-perfect com luz natural e silêncio monástico. Para muitos, é um quarto partilhado, internet que falha, vizinhos barulhentos, e família que não entende que "estar em casa" não significa "estar disponível".</p>
@@ -1496,7 +1892,6 @@
         let modalText = null;
         let closeModal = null;
 
-        // Função de inicialização
         function init() {
             track = document.getElementById('carouselTrack');
             indicators = document.querySelectorAll('.indicator');
@@ -1516,135 +1911,139 @@
 
             bindEvents();
             startAutoPlay();
-        }
 
-        // Bind dos eventos
-        function bindEvents() {
-            // Navegação
-            const nextBtn = document.getElementById('nextBtn');
-            const prevBtn = document.getElementById('prevBtn');
+            // Menu mobile
+            document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
 
-            if (nextBtn) {
-                nextBtn.addEventListener('click', next);
-            }
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
 
-            if (prevBtn) {
-                prevBtn.addEventListener('click', prev);
-            }
-
-            // Indicadores
-            for (let i = 0; i < indicators.length; i++) {
-                indicators.forEach((indicator, i) => {
-                    indicator.addEventListener('click', function () {
-                        goTo(i); // Cada bolinha leva ao slide exato
-                    });
+                    if (href.length > 1) {
+                        const target = document.querySelector(href);
+                        if (target) {
+                            e.preventDefault();
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
                 });
-            }
+            });
 
-            // Eventos do modal
-            bindModalEvents();
-        }
-
-        // Próximo slide
-        function next() {
-            const maxSlide = totalSlides - 1;
-            currentSlide = currentSlide < maxSlide ? currentSlide + 1 : 0;
-            updateCarousel();
-            restartAutoPlay();
-        }
-
-        function prev() {
-            const maxSlide = totalSlides - 1;
-            currentSlide = currentSlide > 0 ? currentSlide - 1 : maxSlide;
-            updateCarousel();
-            restartAutoPlay();
-        }
-
-        function goTo(index) {
-            currentSlide = index;
-            updateCarousel();
-            restartAutoPlay();
-        }
-
-        function restartAutoPlay() {
-            stopAutoPlay();
-            startAutoPlay();
-        }
-
-        function startAutoPlay() {
-            stopAutoPlay(); // Garante que não duplica
-            autoPlayInterval = setInterval(() => {
-                const slidesVisible = window.innerWidth <= 768 ? 1 : 5;
-                const maxSlide = totalSlides - slidesVisible;
-
-                currentSlide = currentSlide < maxSlide ? currentSlide + 1 : 0;
-                updateCarousel();
-            }, 5000); // 5 segundos
-        }
-
-
-        // Atualizar carrossel
-        function updateCarousel() {
-            const slideWidth = window.innerWidth <= 768 ? 100 : 20;
-            const position = currentSlide * slideWidth;
-            track.style.transform = 'translateX(-' + position + '%)';
-
-            // Atualizar o indicador ativo (um por slide!)
-            indicators.forEach((indicator, index) => {
-                if (index === currentSlide) {
-                    indicator.classList.add('active');
+            // Add scroll effect to header
+            window.addEventListener('scroll', function () {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.background = 'linear-gradient(135deg, rgba(67, 97, 238, 0.95), rgba(63, 55, 201, 0.95))';
+                    header.style.backdropFilter = 'blur(10px)';
                 } else {
-                    indicator.classList.remove('active');
+                    header.style.background = 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))';
+                    header.style.backdropFilter = 'none';
+                }
+            });
+
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            const subMenus = document.querySelectorAll('.has-submenu');
+
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            subMenus.forEach(item => {
+                const link = item.querySelector('a');
+                link.addEventListener('click', e => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        item.classList.toggle('open');
+                    }
+                });
+            });
+
+            // Filtro por categoria
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const selectedCategory = btn.getAttribute('data-category');
+                    const allSlides = document.querySelectorAll('.carousel-slide');
+                    totalSlides = 0;
+
+                    allSlides.forEach(slide => {
+                        const card = slide.querySelector('.blog-card');
+                        const cardCategory = card.getAttribute('data-category');
+
+                        if (selectedCategory === 'all' || selectedCategory === cardCategory) {
+                            slide.style.display = '';
+                            totalSlides++;
+                        } else {
+                            slide.style.display = 'none';
+                        }
+                    });
+
+                    currentSlide = 0;
+                    updateCarousel();
+                });
+            });
+
+            // Header scroll effect
+            window.addEventListener('scroll', function () {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.background = 'linear-gradient(135deg, rgba(67, 97, 238, 0.95), rgba(63, 55, 201, 0.95))';
+                    header.style.backdropFilter = 'blur(10px)';
+                } else {
+                    header.style.background = 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))';
+                    header.style.backdropFilter = 'none';
                 }
             });
         }
 
+        function bindEvents() {
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtn = document.getElementById('prevBtn');
 
+            if (nextBtn) nextBtn.addEventListener('click', next);
+            if (prevBtn) prevBtn.addEventListener('click', prev);
 
-        // Parar reprodução automática
-        function stopAutoPlay() {
-            if (autoPlayInterval) {
-                clearInterval(autoPlayInterval);
-                autoPlayInterval = null;
-            }
+            indicators.forEach((indicator, i) => {
+                indicator.addEventListener('click', () => goTo(i));
+            });
+
+            bindModalEvents();
         }
 
-        // Eventos do modal
         function bindModalEvents() {
-            // Abrir modal ao clicar no card
             const blogCards = document.querySelectorAll('.blog-card');
-            for (let i = 0; i < blogCards.length; i++) {
-                blogCards[i].addEventListener('click', function () {
+            blogCards.forEach(card => {
+                card.addEventListener('click', function () {
                     const articleId = this.getAttribute('data-article');
-
-                    // Verifica se a variável articles existe globalmente
                     if (typeof articles !== 'undefined' && articles[articleId]) {
                         const article = articles[articleId];
-
                         modalTitle.textContent = article.title;
                         modalDate.textContent = '📅 ' + article.date;
                         modalReadTime.textContent = '⏱️ ' + article.readTime;
                         modalCategory.textContent = '🏷️ ' + article.category;
-                        modalImage.style.backgroundImage = 'url(\'' + article.image + '\')';
+                        modalImage.style.backgroundImage = `url('${article.image}')`;
                         modalText.innerHTML = article.content;
 
                         modal.style.display = 'block';
                         document.body.style.overflow = 'hidden';
                     }
                 });
-            }
+            });
 
-            // Fechar modal
             if (closeModal) {
-                closeModal.addEventListener('click', function () {
+                closeModal.addEventListener('click', () => {
                     modal.style.display = 'none';
                     document.body.style.overflow = 'auto';
                 });
             }
 
-            // Fechar modal ao clicar fora dele
             if (modal) {
-                modal.addEventListener('click', function (e) {
+                modal.addEventListener('click', (e) => {
                     if (e.target === modal) {
                         modal.style.display = 'none';
                         document.body.style.overflow = 'auto';
@@ -1652,7 +2051,6 @@
                 });
             }
 
-            // Fechar modal com tecla ESC
             document.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape' && modal.style.display === 'block') {
                     modal.style.display = 'none';
@@ -1661,92 +2059,70 @@
             });
         }
 
-        // Inicializar quando DOM carregar
+        function updateCarousel() {
+    const slideWidth = window.innerWidth <= 768 ? 100 : 25; // 25% = 4 por linha
+    const slidesVisible = window.innerWidth <= 768 ? 1 : 4;
+    const maxOffset = (totalSlides - slidesVisible) * slideWidth;
+    const position = Math.min(currentSlide * slideWidth, maxOffset);
+
+    track.style.transform = `translateX(-${position}%)`;
+
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentSlide);
+    });
+}
+
+
+
+        function next() {
+    const maxSlide = totalSlides - 1;
+    currentSlide = currentSlide < maxSlide ? currentSlide + 1 : 0;
+    updateCarousel();
+    restartAutoPlay();
+}
+
+function prev() {
+    const maxSlide = totalSlides - 1;
+    currentSlide = currentSlide > 0 ? currentSlide - 1 : maxSlide;
+    updateCarousel();
+    restartAutoPlay();
+}
+
+
+        function goTo(index) {
+            currentSlide = index;
+            updateCarousel();
+            restartAutoPlay();
+        }
+
+        function startAutoPlay() {
+    stopAutoPlay();
+    autoPlayInterval = setInterval(() => {
+        const slidesVisible = window.innerWidth <= 768 ? 1 : 4;
+        const maxSlide = totalSlides - slidesVisible;
+        currentSlide = currentSlide < maxSlide ? currentSlide + 1 : 0;
+        updateCarousel();
+    }, 5000);
+}
+
+
+        function stopAutoPlay() {
+            if (autoPlayInterval) {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = null;
+            }
+        }
+
+        function restartAutoPlay() {
+            stopAutoPlay();
+            startAutoPlay();
+        }
+
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', init);
         } else {
             init();
         }
-        // Fechar modal ao clicar fora
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Filtro por categoria
-        document.querySelectorAll('.category-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Atualiza o botão ativo
-        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const selectedCategory = btn.getAttribute('data-category');
-
-        const allSlides = document.querySelectorAll('.carousel-slide');
-        totalSlides = 0;
-
-        allSlides.forEach(slide => {
-            const card = slide.querySelector('.blog-card');
-            const cardCategory = card.getAttribute('data-category');
-
-            if (selectedCategory === 'all' || selectedCategory === cardCategory) {
-                slide.style.display = '';
-                totalSlides++;
-            } else {
-                slide.style.display = 'none';
-            }
-        });
-
-        currentSlide = 0;
-        updateCarousel();
-    });
-});
-
-
-        // Smooth scrolling para links internos
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Efeito de scroll no header
-        window.addEventListener('scroll', function () {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'linear-gradient(135deg, rgba(67, 97, 238, 0.95), rgba(63, 55, 201, 0.95))';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))';
-                header.style.backdropFilter = 'none';
-            }
-        });
-
-        const menuToggle = document.querySelector('.mobile-menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        const subMenus = document.querySelectorAll('.has-submenu');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        subMenus.forEach(item => {
-            item.addEventListener('click', e => {
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    item.classList.toggle('open');
-                }
-            });
-        });
     </script>
 </body>
 

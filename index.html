@@ -1,45 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POMTO - Trabalhe com Liberdade, Saúde e Resultado</title>
     <link rel="icon" href="assets/pomto_icon.png" type="image/png">
-    <link rel="stylesheet" href="style.css">    
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-   <header>
-    <nav>
-        <a href="#" class="logo-container">
-            <img src="assets/pomto_icon.png" class="logo-image" alt="Logotipo do POMTO">
-            <span class="logo-text">POMTO</span>
-        </a>
-        <button class="mobile-menu-toggle" aria-label="Menu">&#9776;</button>
-        <ul class="nav-links">
-            <li class="has-submenu">
-                <a href="#">Produto</a>
-                <ul class="submenu">
-                    <li><a href="#problems">Problemas</a></li>
-                    <li><a href="#features">Como Funciona</a></li>
-                    <li><a href="#demo">Demo</a></li>
-                </ul>
-            </li>
-            <li><a href="#pricing">Planos</a></li>
-            <li><a href="#empresas">Empresas</a></li>
-            <li><a href="pomto_blog.html">Blog</a></li>
-            <li><a href="pomto_faq.html">FAQ</a></li>
-            <li><a href="#contact">Contato</a></li>
-        </ul>
-    </nav>
-</header>
+    <header>
+        <nav>
+            <a href="index.html" class="logo-container">
+                <img src="assets/pomto_icon.png" class="logo-image" alt="Logotipo do POMTO">
+                <span class="logo-text">POMTO</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Menu">&#9776;</button>
+            <ul class="nav-links">
+                <li class="has-submenu">
+                    <a href="#">Produto</a>
+                    <ul class="submenu">
+                        <li><a href="#problems">Problemas</a></li>
+                        <li><a href="#features">Como Funciona</a></li>
+                        <li><a href="#demo">Demo</a></li>
+                    </ul>
+                </li>
+                <li><a href="#pricing">Planos</a></li>
+                <li><a href="#empresas">Empresas</a></li>
+                <li><a href="pomto_blog.html">Blog</a></li>
+                <li><a href="pomto_faq.html">FAQ</a></li>
+                <li class="has-submenu">
+                    <a href="#">Suporte</a>
+                    <ul class="submenu">
+                        <li><a href="pomto_contact.html">Contato</a></li>
+                        <li><a href="pomto-privacy.html">Políticas de Privacidade</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
     <section class="hero">
         <div class="hero-content">
             <h1>POMTO</h1>
             <p class="hero-subtitle">Trabalhe com Liberdade, Saúde e Resultado</p>
-            <p>Menos vigilância, mais confiança. Organize seu dia, cuide do seu bem-estar e mostre resultados reais — sem ser vigiado.</p>
+            <p>Menos vigilância, mais confiança. Organize seu dia, cuide do seu bem-estar e mostre resultados reais —
+                sem ser vigiado.</p>
             <div class="hero-buttons">
-                <a href="https://apps.microsoft.com/store/detail/9N852P6N7NKM?cid=DevShareMCLPCS" target="_blank" class="btn btn-primary">📥 Baixar Agora - Grátis</a>
+                <a href="https://apps.microsoft.com/store/detail/9N852P6N7NKM?cid=DevShareMCLPCS" target="_blank"
+                    class="btn btn-primary">📥 Baixar Agora - Grátis</a>
                 <a href="#empresas" class="btn btn-secondary">👨‍💼 Sou uma Empresa</a>
                 <a href="#cv-pro" class="btn btn-secondary">📄 Ver CV Pro <span class="coming-soon">em breve</span></a>
             </div>
@@ -127,11 +137,17 @@
                     <p>Frases inspiradoras africanas e globais que motivam e humanizam sua jornada profissional.</p>
                 </div>
             </div>
-            
+
             <div class="section-title" style="margin-top: 5rem;">
                 <h2>Em Breve <span class="coming-soon">NOVIDADES</span></h2>
             </div>
             <div class="features">
+                <div class="feature-box">
+                    <div class="feature-icon">🏢</div>
+                    <h3>Recursos Corporativos</h3>
+                    <p>Acompanhe sua equipe com privacidade, acesse dashboards claros, relatórios objetivos e integre
+                        tudo ao seu sistema.</p>
+                </div>
                 <div class="feature-box">
                     <div class="feature-icon">📄</div>
                     <h3>CV Profissional Automatizado</h3>
@@ -179,7 +195,7 @@
                 <p>Use gratuitamente como indivíduo ou contrate um plano empresarial para gerenciar sua equipe</p>
             </div>
             <div class="pricing-plans">
-                <div class="plan">
+                <div class="plan plan-popular">
                     <h3>🆓 Gratuito</h3>
                     <div class="price">Gratuito</div>
                     <div class="price-description">Para todo profissional remoto</div>
@@ -191,10 +207,11 @@
                         <li>Participação em múltiplas empresas</li>
                         <li>Suporte por e-mail</li>
                     </ul>
-                    <a href="https://apps.microsoft.com/store/detail/9N852P6N7NKM?cid=DevShareMCLPCS" target="_blank" class="btn btn-primary">Começar Gratuitamente</a>
+                    <a href="https://apps.microsoft.com/store/detail/9N852P6N7NKM?cid=DevShareMCLPCS" target="_blank"
+                        class="btn btn-primary">Começar Gratuitamente</a>
                 </div>
 
-                <div class="plan plan-popular" id="cv-pro">
+                <div class="plan" id="cv-pro">
                     <h3>🔥 CV Pro</h3>
                     <div class="price">Kz 3.700 <span>/mês</span></div>
                     <div class="price-description">Quem busca novas oportunidades</div>
@@ -278,47 +295,29 @@
     <section class="testimonials">
         <div class="container">
             <div class="section-title">
-                <h2>Depoimentos Reais</h2>
-                <p>Veja o que nossos usuários estão dizendo sobre o POMTO</p>
+                <h2>Depoimento do Fundador</h2>
+                <p>Entenda por que o POMTO foi criado e o impacto que ele busca gerar</p>
             </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Eu gasto menos, sou mais produtiva e finalmente me sinto respeitada no trabalho remoto. O POMTO mudou completamente minha relação com o trabalho à distância."</p>
-                    <div class="client-info">
-                        <div class="client-image">
-                            <img src="/api/placeholder/60/60" style="width: 100%; height: 100%; object-fit: cover;" alt="Karina">
-                        </div>
-                        <div>
-                            <h4>Karina Santos</h4>
-                            <p>Freelancer & Designer</p>
-                        </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "O POMTO nasceu da minha vivência com ansiedade e depressão — e da vontade de criar um ambiente de
+                    trabalho mais justo, humano e acessível. Conheço muitas pessoas incríveis que enfrentam condições de
+                    saúde mental ou física, mas continuam sendo extremamente competentes. Esta plataforma é sobre isso:
+                    respeito, inclusão, equilíbrio entre vida e trabalho, privacidade e reconhecimento real do esforço
+                    de cada um."
+                </p>
+                <div class="client-info">
+                    <div class="client-image">
+                        <img src="assets/ceo.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="Eliézer">
                     </div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Com o POMTO, nossa empresa aumentou a performance da equipe e reduziu significativamente o estresse. É uma ferramenta que realmente funciona."</p>
-                    <div class="client-info">
-                        <div class="client-image">
-                            <img src="/api/placeholder/60/60" style="width: 100%; height: 100%; object-fit: cover;" alt="Eduardo">
-                        </div>
-                        <div>
-                            <h4>Eduardo Lima</h4>
-                            <p>Gerente de Operações</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Minha visão para o POMTO nasceu da necessidade de criar uma solução que respeite a privacidade dos trabalhadores enquanto fornece transparência para as empresas."</p>
-                    <div class="client-info">
-                        <div class="client-image">
-                            <img src="assets/ceo.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="Eliézer">
-                        </div>
-                        <div>
-                            <h4>Eliézer Afonso</h4>
-                            <p>Desenvolvedor Principal & Fundador</p>
-                        </div>
+                    <div>
+                        <h4>Eliézer Afonso</h4>
+                        <p>Desenvolvedor Principal & Fundador</p>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -326,8 +325,10 @@
         <div class="container">
             <div class="cta-content">
                 <h2>👉 Baixe agora e comece sua jornada de liberdade digital</h2>
-                <p>Transforme seu trabalho remoto em uma experiência mais saudável, produtiva e respeitosa. Disponível gratuitamente para Windows.</p>
-                <a href="https://apps.microsoft.com/store/detail/9N852P6N7NKM?cid=DevShareMCLPCS" target="_blank" class="btn btn-primary">📥 Baixar da Microsoft Store</a>
+                <p>Transforme seu trabalho remoto em uma experiência mais saudável, produtiva e respeitosa. Disponível
+                    gratuitamente para Windows.</p>
+                <a href="https://apps.microsoft.com/store/detail/9N852P6N7NKM?cid=DevShareMCLPCS" target="_blank"
+                    class="btn btn-primary">📥 Baixar da Microsoft Store</a>
             </div>
         </div>
     </section>
@@ -337,7 +338,8 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>📌 Sobre o POMTO</h3>
-                    <p>Trabalho remoto com segurança, saúde e confiança. Uma solução ética para trabalhadores e empresas que valorizam resultados.</p>
+                    <p>Trabalho remoto com segurança, saúde e confiança. Uma solução ética para trabalhadores e empresas
+                        que valorizam resultados.</p>
                     <div class="social-links">
                         <a href="#" class="social-link">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
@@ -346,12 +348,16 @@
                         </a>
                         <a href="#" class="social-link">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                                <path
+                                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                                </path>
                             </svg>
                         </a>
                         <a href="#" class="social-link">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
                                 <rect x="2" y="9" width="4" height="12"></rect>
                                 <circle cx="4" cy="4" r="2"></circle>
                             </svg>
@@ -378,11 +384,12 @@
                 <div class="footer-column">
                     <h3>📃 Suporte</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Central de Ajuda</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="pomto_contact.html">Central de Ajuda</a></li>
+                        <li><a href="pomto_faq.html">FAQ</a></li>
                         <li><a href="#">Documentação</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                        <li><a href="#">📺 Canal no YouTube</a></li>
+                        <li><a href="pomto-privacy.html">Política de Privacidade</a></li>
+                        <li><a href="https://www.youtube.com/playlist?list=PLXSzD6c7R5-jVmPzFOjCq6H0NQqPA9xLf&si=fN4xmhkkZcuZrAdH"
+                                target="_blank">📺 Canal no YouTube</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -396,28 +403,35 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 POMTO - Todos os direitos reservados | <a style="color: rgba(255, 255, 255, 0.6);" href="https://www.freepik.com/free-photo/man-african-ethnicity-using-conference-webcam-communication_16149820.htm#fromView=image_search_similar&page=1&position=2&uuid=2c3e99af-b92e-4254-8443-91ecf761991c&query=Trabalho+remoto">Image by DC Studio on Freepik</a></p>
+                <p>&copy; 2025 POMTO - Todos os direitos reservados | <a style="color: rgba(255, 255, 255, 0.6);"
+                        href="https://www.freepik.com/free-photo/man-african-ethnicity-using-conference-webcam-communication_16149820.htm#fromView=image_search_similar&page=1&position=2&uuid=2c3e99af-b92e-4254-8443-91ecf761991c&query=Trabalho+remoto">Image
+                        by DC Studio on Freepik</a></p>
             </div>
         </div>
     </footer>
 
     <script>
         // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                const href = this.getAttribute('href');
+
+                if (href.length > 1) {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 }
             });
         });
 
         // Add scroll effect to header
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
                 header.style.background = 'linear-gradient(135deg, rgba(67, 97, 238, 0.95), rgba(63, 55, 201, 0.95))';
@@ -428,22 +442,24 @@
             }
         });
 
-         const menuToggle = document.querySelector('.mobile-menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    const subMenus = document.querySelectorAll('.has-submenu');
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const subMenus = document.querySelectorAll('.has-submenu');
 
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-
-    subMenus.forEach(item => {
-        item.addEventListener('click', e => {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                item.classList.toggle('open');
-            }
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
-    });
+
+        subMenus.forEach(item => {
+            const link = item.querySelector('a');
+            link.addEventListener('click', e => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    item.classList.toggle('open');
+                }
+            });
+        });
     </script>
 </body>
+
 </html>

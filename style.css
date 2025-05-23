@@ -11,6 +11,7 @@
      --card-bg: #ffffff;
      --soft-blue: #e8f2ff;
      --muted-text: #6c757d;
+     --warning-color: #ffc107;
  }
 
  * {
@@ -494,7 +495,7 @@
  }
 
  .enterprise-feature h4 {
-     color: var(--accent-color);
+     color: whitesmoke;
      margin-bottom: 1rem;
      font-size: 1.2rem;
  }
@@ -599,7 +600,7 @@
  }
 
  .contact-item h4 {
-     color: var(--accent-color);
+     color: whitesmoke;
      margin-bottom: 0.5rem;
  }
 
@@ -688,63 +689,98 @@
  }
 
  @media (max-width: 768px) {
+     header {
+         padding: 0.5rem;
+     }
+
+     .hero-content,
+     .cta-content,
+     section {
+         padding: 2rem 1rem;
+     }
+
+     .plan {
+         padding: 2rem 1rem;
+     }
+
+     .testimonial-card,
+     .feature-box,
+     .problem-item {
+         padding: 1.5rem;
+     }
+
      .nav-links {
-        flex-direction: column;
-        background: var(--primary-color);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        display: none;
-    }
-
-    .nav-links li {
-        margin: 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .nav-links li a {
-        padding: 1rem;
-        display: block;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .mobile-menu-toggle {
-        display: block;
-    }
-
-    .submenu {
-        position: static;
-        background: var(--secondary-color);
-        box-shadow: none;
-    }
-
-    .has-submenu:hover .submenu {
-        display: none;
-    }
-
-    .has-submenu.open .submenu {
-        display: block;
-    }
-
-     .hero h1 {
-         font-size: 2.8rem;
-     }
-
-     .hero-subtitle {
-         font-size: 1.4rem;
-     }
-
-     .hero-buttons {
          flex-direction: column;
-         align-items: center;
+         background: var(--primary-color);
+         position: absolute;
+         top: 100%;
+         left: 0;
+         width: 100%;
+         display: none;
+     }
+
+     .nav-links li {
+         margin: 0;
+         border-top: 1px solid rgba(255, 255, 255, 0.1);
+     }
+
+     .nav-links li a {
+         padding: 1rem;
+         display: block;
+     }
+
+     .nav-links.active {
+         display: flex;
+     }
+
+     .mobile-menu-toggle {
+         display: block;
+     }
+
+     .submenu {
+         position: static;
+         background: var(--secondary-color);
+         box-shadow: none;
+     }
+
+     .has-submenu:hover .submenu {
+         display: none;
+     }
+
+     .has-submenu.open .submenu {
+         display: block;
+     }
+
+     .hero h1,
+     .cta h2 {
+         font-size: 2.2rem;
+     }
+
+     .hero-subtitle,
+     .cta p {
+         font-size: 1.1rem;
      }
 
      .section-title h2 {
-         font-size: 2.2rem;
+         font-size: 1.8rem;
+     }
+
+     .hero p,
+     .section-title p {
+         font-size: 1rem;
+     }
+
+     .btn {
+         font-size: 1rem;
+         padding: 0.8rem 1.5rem;
+     }
+
+     .problems-grid,
+     .features,
+     .pricing-plans,
+     .testimonial-grid,
+     .enterprise-features {
+         grid-template-columns: 1fr;
      }
 
      .plan-popular {
@@ -758,4 +794,11 @@
      .price {
          font-size: 2.5rem;
      }
+
+     .logo-image,
+     .client-image {
+         max-width: 100%;
+         height: auto;
+     }
+
  }
